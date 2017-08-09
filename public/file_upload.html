@@ -319,7 +319,9 @@
     <p >
       <!-- external link button  -->
       <p class="extra-link ">
-                <a class="link link-button">Let's go</a>
+                <a class="link link-button">Let's go 1</a>
+
+                <a class="link2 link-button">Let's go 2</a>
       </p>
 
     </p>
@@ -358,9 +360,18 @@
           card.openURL('https://wowboxpak.typeform.com/to/XsZRas', JSON.stringify({callback: 'onURLOpened'}));
         }
 
+        var unsetPressedLink2 = function(e) {
+          e.target.classList.remove('pressed');
+          card.openURL('https://tmmoffers.wowbox.io/index.php?contest_name=Bojana%20test', JSON.stringify({callback: 'onURLOpened'}));
+        }
+
         var link = document.querySelector('.link');
         link.addEventListener('touchstart', setPressedLink);
         link.addEventListener('touchend', unsetPressedLink);
+
+        var link2 = document.querySelector('.link2');
+        link2.addEventListener('touchstart', setPressedLink);
+        link2.addEventListener('touchend', unsetPressedLink2);
 
       }
 

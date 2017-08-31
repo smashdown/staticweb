@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+        <meta charset="utf-8">
+        <title>Test video</title>
+    </head>
+    <body>
+        <style>
+      
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Regular.ttf');
+                  font-weight: normal;
+                  font-weight: 400;
+                  font-style: normal;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Semibold.ttf');
+                  font-weight: 500;
+                  font-style: normal;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Bold.ttf');
+                  font-weight: bold;
+                  font-weight: 700;
+                  font-style: normal;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Italic.ttf');
+                  font-weight: normal;
+                  font-weight: 400;
+                  font-style: italic;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-BoldItalic.ttf');
+                  font-weight: bold;
+                  font-weight: 700;
+                  font-style: italic;
+              }
+              @font-face {
+                  font-family: 'Nafees';
+                  src: url('/content/fonts/Nafees.ttf');
+              }
+              @font-face {
+                  font-family: 'Pyidaungsu';
+                  /* First src url is for webview on mobiles, Second is for preview on admin */
+                  src: url('/content/fonts/Pyidaungsu.ttf'),
+                       url('https://api.wowbox.telenor.io/content/fonts/Pyidaungsu.ttf');
+              }
+              @font-face {
+                  font-family: 'Zawgyi-One';
+                  src: url('/content/fonts/Zawgyi-One.ttf'),
+                       url('https://api.wowbox.telenor.io/content/fonts/Zawgyi-One.ttf');
+              }
+              body {
+                  font-size: 16px;
+              }
+              .urdu {
+                  direction: rtl;
+                  font-family: 'Nafees';
+                  font-weight: 400;
+              }
+              .myanmar {
+                  font-weight: 400;
+                  line-height: 1.8;
+                  font-size: 16px;
+              }
+              .myanmar.unicode {
+                  font-family: 'Pyidaungsu';
+              }
+      
+              .myanmar.zawgyi {
+                  font-family: 'Zawgyi-One';
+              }
+      body {
+        font-family: "Open Sans", Zawgyi-One;
+        margin: 0;
+        padding: 0;
+      }
+
+      img {
+          max-width: 100%;
+      }
+
+      p {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
+
+      .content {
+        padding: 10px 10px;
+        text-align: center;
+      }
+
+      .content p {
+        color: #21282e;
+        font-size: 1em;
+        margin-bottom: 1em;
+        margin-top: 0;
+        opacity: 0.8;
+        padding: 0 10px;
+        line-height: 22px;
+      }
+
+      .content .excerpt {
+        color: #ffffff;
+        font-size: 1.2em;
+        margin: 0 20px;
+      }
+
+      .controlsContainer {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        width: 100%;
+        height: 40px;
+        border-bottom: 1px solid #d0d0d0;
+      }
+
+      .dataChargesText {
+        font-size: 0.6em;
+        opacity: 0.6;
+      }
+
+      .pausePlayContainer {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        width: 15%;
+        height: 100%;
+      }
+
+      .pause {
+        border-left: 8px solid #d0d0d0;
+        border-right: 8px solid #d0d0d0;
+        position: relative;
+        height: 25px;
+        width: 5px;
+        left: 15px;
+        top: 8px;
+      }
+
+      .play {
+        margin: 4px 0 4px 15px;
+        border: 16px solid transparent;
+        border-left-width: 20px;
+        border-left-color: #d0d0d0;
+      }
+
+      .player {
+        background-color: #000;
+        display: block;
+        height: auto;
+        width: 100%;
+      }
+
+      .progressbarContainer {
+        width: 85%;
+        height: 100%;
+
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .progressbarInner {
+        content: '';
+        display: block;
+        background: #fff;
+        height: 100%;
+        border-radius: 10px;
+      }
+
+      .progressbarOuter {
+        border-radius: 15px;
+        height: 20px;
+        width: 90%;
+        padding: 4px;
+      }
+
+      .white {
+        background: #fff;
+      }
+
+      .grey {
+        background: #d0d0d0;
+      }
+
+      .title {
+        color: #00ace7;
+        font-weight: bold;
+        font-size: 1.6em;
+        margin: 0.6em 20px;
+      }
+
+      .myanmar.content p {
+        font-size: 1em;
+        line-height: normal;
+      }
+
+      .urdu.content p {
+        font-size: 0.8em;
+        line-height: normal;
+      }
+
+      </style>
+        <div class="header">
+            <video class="player" src="https://api.wowbox.telenor.io/content/video/BAN_BOWLING_HIGHLIGHTS.mp4" preload="auto" autoplay poster="data:;base64,"></video>
+            <div class="controlsContainer">
+                <div class="pausePlayContainer">
+                    <div id="playpause"></div>
+                </div>
+                <div class="progressbarContainer">
+                    <div class="progressbarOuter white">
+                        <div class="progressbarInner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" content">
+            <div class="dataChargesText">Press play for free streaming - no data traffic will be charged 111</div>
+            <div class="title">WowVideo</div>
+            <div class="excerpt"></div>
+            <div class="content">
+                <p>main test content</p>
+            </div>
+        </div>
+        <script>
+        window.onload = function() {
+          var controls = document.querySelector('.controlsContainer');
+          var player = document.querySelector('.player');
+          var playpause = document.querySelector('#playpause');
+          var outerProgressbar = document.querySelector('.progressbarOuter');
+          var outerProgressbarWidth = outerProgressbar.offsetWidth - 8; // 2*4px padding
+          var innerProgressbar = document.querySelector('.progressbarInner');
+          innerProgressbar.style.width = 0;
+
+          isConnectionAvailableCallback = function(err, result) {
+            if (!result.result) {
+                alert('aaaa');
+            }
+            return;
+          };
+          card.performNativeAction('isConnectionAvailable', JSON.stringify ({'callback': 'isConnectionAvailableCallback', 'case': 'claim'}));
+          
+          showPlayBtn = function() {
+            playpause.classList.remove('pause');
+            playpause.classList.add('play');
+          };
+
+          showPauseBtn = function() {
+            playpause.classList.remove('play');
+            playpause.classList.add('pause');
+          };
+
+          // Can't use display: none/block here because that sets outerProgressbar.offsetWidth to 0
+          showProgressBar = function() {
+            outerProgressbar.classList.remove('white');
+            outerProgressbar.classList.add('grey');
+          };
+
+          togglePlayPause = function() {
+            if (!player.paused) {
+              player.pause();
+              showPlayBtn();
+              card.postEvent('streamPause');
+            } else {
+              player.play();
+              showPauseBtn();
+              card.postEvent('streamPlay');
+            }
+          };
+
+          player.addEventListener('touchend', togglePlayPause);
+          playpause.addEventListener('touchend', togglePlayPause);
+
+          player.addEventListener('ended', function onVideoEnded() {
+            showPlayBtn();
+            card.postEvent('streamEnd');
+          });
+
+          player.addEventListener('loadeddata', function() {
+            player.play(); //this first play is needed for Android 4.1+
+          }, false);
+
+          player.addEventListener('canplaythrough', function() {
+            player.play(); //this second play is needed for Android 4.0 only
+          }, false);
+
+          // Get the first playing event and show controls
+          player.addEventListener('timeupdate', function triggerOnce() {
+            card.postEvent('streamPlay');
+            showPauseBtn();
+            showProgressBar();
+            player.removeEventListener('timeupdate', triggerOnce);
+          }, false);
+
+          player.addEventListener('timeupdate', function updateProgressbar() {
+            innerProgressbar.style.width = Math.floor(outerProgressbarWidth * player.currentTime / player.duration) + "px";
+          });
+
+          outerProgressbar.addEventListener('click', function navigateUsingProgressbar(event) {
+            var clickPosition = event.offsetX / outerProgressbarWidth;
+            innerProgressbar.offsetWidth = clickPosition;
+            player.currentTime = player.duration * clickPosition;
+          });
+        }
+      </script>
+    </body>
+</html>

@@ -248,14 +248,8 @@
           var innerProgressbar = document.querySelector('.progressbarInner');
           innerProgressbar.style.width = 0;
 
-          isConnectionAvailableCallback = function(err, result) {
-            if (!result.result) {
-                alert('aaaa');
-            }
-            return;
-          };
-          card.performNativeAction('isConnectionAvailable', JSON.stringify ({'callback': 'isConnectionAvailableCallback', 'case': 'claim'}));
-          
+          card.performNativeAction('isConnectionAvailable', JSON.stringify ({'case': 'rich_media'}));
+
           showPlayBtn = function() {
             playpause.classList.remove('pause');
             playpause.classList.add('play');

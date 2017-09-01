@@ -248,7 +248,15 @@
           var innerProgressbar = document.querySelector('.progressbarInner');
           innerProgressbar.style.width = 0;
 
-          card.performNativeAction('isConnectionAvailable', JSON.stringify ({'case': 'rich_media'}));
+          isConnectionAvailableCallback = function(err, result) {
+            if (!result.result) { // if disconnected, show toast.
+                alert('translated text here');
+            }
+            return;
+          };
+          if (card.performNativeAction) {
+            card.performNativeAction('isConnectionAvailable', JSON.stringify ({'callback': 'isConnectionAvailableCallback'}));
+          }
 
           showPlayBtn = function() {
             playpause.classList.remove('pause');
@@ -278,6 +286,16 @@
             }
           };
 
+          player.addEventListener('play', function(){
+              // if(player.currentTime != 0) {
+              //   card.postEvent('streamPlay', JSON.stringify({'resumed_at': player.currentTime }));
+              // }
+              if (card.performNativeAction) {
+                card.performNativeAction('isConnectionAvailable', JSON.stringify ({'callback': 'isConnectionAvailableCallback'}));
+              }
+              startTimer();
+            });
+            
           player.addEventListener('touchend', togglePlayPause);
           playpause.addEventListener('touchend', togglePlayPause);
 

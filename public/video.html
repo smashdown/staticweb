@@ -662,7 +662,9 @@
 
             isConnectionAvailableCallback = function(err, result) {
               if (!result.result) {
-                alert('To play video, Please turn on internet connection.');
+                if(card.toast)  {
+                  card.toast('To play video, Please turn on internet connection.');
+                }
               }
             };
 

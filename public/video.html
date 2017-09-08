@@ -664,6 +664,8 @@
               if (!result.result) {
                 if(card.toast)  {
                   card.toast('To play video, Please turn on internet connection.');
+                } else {
+                  console.log('no toast jsInterface in native');
                 }
               }
             };

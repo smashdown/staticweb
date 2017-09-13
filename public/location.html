@@ -20,11 +20,78 @@
     <meta property="fb:app_id" content="1445705312400077"/>
     <title>WowBox Update_13th July</title>
     <style>
+
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Regular.ttf');
+                  font-weight: normal;
+                  font-weight: 400;
+                  font-style: normal;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Semibold.ttf');
+                  font-weight: 500;
+                  font-style: normal;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Bold.ttf');
+                  font-weight: bold;
+                  font-weight: 700;
+                  font-style: normal;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Italic.ttf');
+                  font-weight: normal;
+                  font-weight: 400;
+                  font-style: italic;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-BoldItalic.ttf');
+                  font-weight: bold;
+                  font-weight: 700;
+                  font-style: italic;
+              }
+              @font-face {
+                  font-family: 'Nafees';
+                  src: url('/content/fonts/Nafees.ttf');
+              }
+              @font-face {
+                  font-family: 'Pyidaungsu';
+                  /* First src url is for webview on mobiles, Second is for preview on admin */
+                  src: url('/content/fonts/Pyidaungsu.ttf'),
+                       url('https://api.wowbox.telenor.io/content/fonts/Pyidaungsu.ttf');
+              }
+              @font-face {
+                  font-family: 'Zawgyi-One';
+                  src: url('/content/fonts/Zawgyi-One.ttf'),
+                       url('https://api.wowbox.telenor.io/content/fonts/Zawgyi-One.ttf');
+              }
               body {
                   font-size: 16px;
               }
+              .urdu {
+                  direction: rtl;
+                  font-family: 'Nafees';
+                  font-weight: 400;
+              }
+              .myanmar {
+                  font-weight: 400;
+                  line-height: 1.8;
+                  font-size: 16px;
+              }
+              .myanmar.unicode {
+                  font-family: 'Pyidaungsu';
+              }
+
+              .myanmar.zawgyi {
+                  font-family: 'Zawgyi-One';
+              }
       body {
-        font-family: "Open Sans";
+        font-family: "Open Sans", Zawgyi-One;
         margin: 0;
         padding: 0;
       }
@@ -244,94 +311,41 @@
 <body>
 
 <div class="header">
-    <div class="  title">External Link Test</div>
-    <div class="  lead">This is external link test page</div><br><br><br>
+    <div class="  title">Device location test</div>
+    <div class="  lead">Welcome to test</div><br><br><br>
 
-    <!-- facebook link -->
-      <div class="facebookContainer">
-      <img class="facebook" src="http://www.programmingscripts.com/wp-content/uploads/2015/12/a145.jpg"/>
-      </div><br>
-
-      <!-- download link -->
-      <a href="https://app.wowbox.telenor.io/content/app/wowbox-latest.apk" target="_blank">WowBox APK download</a> <br>
 </div>
 <div class="  content">
     <p >
-      
-
       <!-- external link button  -->
       <p class="extra-link ">
-                <a class="link1 link-button">In-app LINK</a>
-                <a class="link2 link-button">Ex LINK</a>
-                <a class="link3 link-button">In-app FORM</a>
-                <a class="link4 link-button">Ex FORM </a>
+        <a class="link link-button">Tell me where are you</a>
       </p>
-
     </p>
-    <p>
-        
-    </p>
+    
 </div>
 <script>
       window.onload = function() {
-          shareOnFacebook = function(e) {
-              card.postEvent('clickedShareOnFacebook');
-              card.postToFacebook("ফ্রি-তে আপডেট করুন WowBox!" ,"WowBox এখন আরো উন্নত, আরো সহজ!", "https://app.wowbox.telenor.io/content/card-images/fa9f19a1f7166a96c4d38028293e2740c5230278");
-          };
-
-          var clientSupportsFacebookSharing = card.apiVersion && card.apiVersion() >= 4;
-
-          if (!clientSupportsFacebookSharing) {
-              document.querySelector('.facebookContainer').style.display = 'none';
-          }
-
-          var button = document.querySelector('.facebook');
-
-          if (button && clientSupportsFacebookSharing) {
-              button.addEventListener('click', shareOnFacebook);
-          }
-        var onURLOpened = function(err, success) {
+          
+        geolocationCallback = function(err, success) {
           if (!err) {
-            card.performAction('click');
+            alert("lat=" + success.latitude +"\nlng=" + success.longitude);
           }
         }
 
         var setPressedLink = function(e) {
           e.target.classList.add('pressed');
         }
-
-        var unsetPressedLink1 = function(e) {
+        var unsetPressedLink = function(e) {
           e.target.classList.remove('pressed');
-          card.openURL('https://goo.gl/jPFa7E', JSON.stringify({callback: 'onURLOpened'}));
-        }
-        var unsetPressedLink2 = function(e) {
-          e.target.classList.remove('pressed');
-          card.openURL('https://goo.gl/jPFa7E', JSON.stringify({callback: 'onURLOpened', external_browser:true}));
-        }
-        var unsetPressedLink3 = function(e) {
-          e.target.classList.remove('pressed');
-          card.openURL('https://wowboxpak.typeform.com/to/XsZRas', JSON.stringify({callback: 'onURLOpened'}));
-        }
-        var unsetPressedLink4 = function(e) {
-          e.target.classList.remove('pressed');
-          card.openURL('https://wowboxpak.typeform.com/to/XsZRas', JSON.stringify({callback: 'onURLOpened', external_browser:true}));
+          card.getGeolocation(JSON.stringify({callback: 'geolocationCallback'}));
         }
 
-        var link1 = document.querySelector('.link1');
-        link1.addEventListener('touchstart', setPressedLink);
-        link1.addEventListener('touchend', unsetPressedLink1);
+        var link = document.querySelector('.link');
+        link.addEventListener('touchstart', setPressedLink);
+        link.addEventListener('touchend', unsetPressedLink);
 
-        var link2 = document.querySelector('.link2');
-        link2.addEventListener('touchstart', setPressedLink);
-        link2.addEventListener('touchend', unsetPressedLink2);
-
-        var link3 = document.querySelector('.link3');
-        link3.addEventListener('touchstart', setPressedLink);
-        link3.addEventListener('touchend', unsetPressedLink3);
-
-        var link4 = document.querySelector('.link4');
-        link4.addEventListener('touchstart', setPressedLink);
-        link4.addEventListener('touchend', unsetPressedLink4);
+        
       }
 
 </script>

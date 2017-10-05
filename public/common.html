@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-bottom: 60px;
+        }
+        /* Custom container */
+
+        .container {
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+
+        .container>hr {
+            margin: 60px 0;
+        }
+        /* Main marketing message and sign up button */
+
+        .jumbotron {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .jumbotron h1 {
+            font-size: 100px;
+            line-height: 1;
+        }
+
+        .jumbotron .lead {
+            font-size: 20px;
+            line-height: 1.25;
+        }
+
+        .jumbotron .btn {
+            font-size: 18px;
+            min-width: 300px;
+            padding: 14px 24px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h3>Common JS Interface Test</h3>
+            <p class="lead">since Wowbox 2.9.0, we have made common javascript interfaces bellow</p>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickOpenCard()">Open card(no new window)</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickDialog1()">Simple Dialog</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickListDialog1()">List Dialog 1</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickListDialog2()">List Dialog 2</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickInputDialog()">Simple Input Dialog</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickSnackBar()">Snack Bar</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickCloseCard()">Close card</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickGoToPage()">Go back to page</a><br><br> Test it
+            over android 6.0 marshmellow
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickFileDownload()">Download permission denied</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickAppString()">Read app's string</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickScreenSize()">Get device's screen size</a><br><br>
+        </div>
+
+    </div>
+    <script>
+        window.onTrackDownloaded = function (err, success) {
+            if (err) {
+                if (err.permission_denied) {
+                    if (err.never_show_again) {
+                        alert('We need permission to save file into your device. go to settings and update permission please');
+                    } else {
+                        alert('We need permission to save file into your device.');
+                    }
+                } else {
+                    alert('There was an error downloading the track. Please check your network connection');
+                }
+                return;
+            } else {
+                alert('The file has been downloaded');
+            }
+        };
+
+        window.onClickOkDialog = function (err, success) {
+            if (err) {
+                return;
+            } else {
+                alert('Positive button clicked on dialog');
+            }
+        };
+
+        window.onClickCacelDialog = function (err, success) {
+            if (err) {
+                return;
+            } else {
+                alert('Negative button clicked on dialog');
+            }
+        };
+
+        window.onClickNeutralDialog = function (err, success) {
+            if (err) {
+                return;
+            } else {
+                alert('Neutral button clicked on dialog');
+            }
+        };
+
+        window.onItemClickListDialog = function (err, success) {
+            if (err) {
+                return;
+            } else {
+                alert('List dialog item index ' + success.index + ' was clicked');
+            }
+        };
+
+        window.onInputDialogCallback = function (err, success) {
+            if (err) {
+                return;
+            } else {
+                alert('input = ' + success.text);
+            }
+        };
+
+        window.onOkClickSnackBar = function (err, success) {
+            if (err) {
+                return;
+            } else {
+                alert('SnackBar callback was called');
+            }
+        };
+
+        function onClickOpenCard() {
+            var errorMessage = card.openCardDetailsWithOpts(0, '/api/cards/26006/details',
+                JSON.stringify({
+                    'open_new_window': 'true', // default false, if it's true works same to openCardDetail()
+                    'refreshable': 'false', // default true
+                    'hide_bottom_bar': 'false' // default false
+                }));
+            if (errorMessage) {
+                console.log(errorMessage);
+            }
+        }
+
+        function onClickDialog1() {
+            var errorMessage = card.showSimpleDialog('This is title', 'this is message',
+                JSON.stringify({
+                    'cancelable': 'false', // default true
+                    'positive_button_text': 'OK', 'positive_button_callback': 'onClickOkDialog',
+                    'negative_button_text': 'CANCEL', 'negative_button_callback': 'onClickCacelDialog',
+                    'neutral_button_text': 'HM..', 'neutral_button_callback': 'onClickNeutralDialog',
+                }));
+            if (errorMessage) {
+                console.log(errorMessage);
+            }
+        }
+
+        function onClickListDialog1() {
+            var errorMessage = card.showSimpleListDialog('This is title',
+                JSON.stringify({
+                    'cancelable': 'true', // default true
+                    'items': ['item 1', 'item 2', 'item 3'],
+                    'callback': 'onItemClickListDialog',
+                    'negative_button_text': 'CANCEL', 'negative_button_callback': 'onClickCacelDialog',
+                }));
+            if (errorMessage) {
+                console.log(errorMessage);
+            }
+        }
+        function onClickListDialog2() {
+            var errorMessage = card.showSimpleListDialog('This is title',
+                JSON.stringify({
+                    'cancelable': 'true', // default true
+                    'items': ['item 1', 'item 2', 'item 3'],
+                    'style': 'radio', // default list
+                    'prompt': 2, // default -1, for default selection for radio style
+                    'callback': 'onItemClickListDialog',
+                    'negative_button_text': 'CANCEL', 'negative_button_callback': 'onClickCacelDialog',
+                }));
+            if (errorMessage) {
+                console.log(errorMessage);
+            }
+        }
+
+        function onClickInputDialog() {
+            //onInputDialogCallback
+            var errorMessage = card.showSimpleInputDialog(
+                'This is title',
+                'this is message',
+                'this is hint',
+                'this is prefill',
+                JSON.stringify({
+                    'cancelable': 'true', // default true
+                    'input_type': 1, // https://developer.android.com/reference/android/text/InputType.html
+                    'positive_button_text': 'OK',
+                    'auto_dismiss': false, // default true. not allow empty input
+                    'error_empty_message': 'please input the value', // if auto_dismiss is false, set a error message to show user
+                    'input_callback': 'onInputDialogCallback',
+                    'negative_button_text': 'CANCEL',
+                    'negative_button_callback': 'onClickCacelDialog',
+                }));
+            if (errorMessage) {
+                console.log(errorMessage);
+            }
+        }
+
+        function onClickSnackBar() {
+            var errorMessage = card.showSnackBar('this is message', 3000,
+                JSON.stringify({
+                    'button_text': 'OK',
+                    'button_callback': 'onOkClickSnackBar',
+                    'button_color': '#ffff00'
+                }));
+            if (errorMessage) {
+                console.log(errorMessage);
+            }
+        }
+
+        function onClickCloseCard() {
+            card.dismiss(true);
+        }
+
+        function onClickGoToPage() {
+            card.goToPage('Store');
+        }
+
+        function onClickFileDownload() {
+            var file = 'https://api.wowbox.telenor.io/content/music/WowBox_ringtone.mp3';
+            file = file.replace('api.wowbox.telenor.io/content/music/', 's3-ap-southeast-1.amazonaws.com/wowbox-storage/music/');
+
+            card.downloadFile(file, 'Apeiruss-এর মিউজিকে ও মুন-এর টিউনে ‘ভালোবেসে নিরুদ্দেশে’ গানটি জিপি মিউজিক থেকে ডাউনলোড করতে ট্যাপ করুন।', 'WowBox music download', 'audio', JSON.stringify({ callback: 'onTrackDownloaded' }));
+        }
+
+        function onClickAppString() {
+            alert('wow_tutorial_title_01 = ' + app.string('wow_tutorial_title_01'));
+        }
+
+        function onClickScreenSize() {
+            alert('Screen width = ' + app.screenWidth() + '\nScreen height = ' + app.screenHeight());
+        }
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+    
+</body>
+
+</html>

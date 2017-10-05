@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="div1">
+        <h2>Empty body to refresh football card content</h2>
+    </div>
+
+    <script>
+        function executeQuery() {
+            $.ajax({
+                url: 'http://192.168.40.19:3000/football.html',
+                success: function (data) {
+                    $("#div1").html(data);
+                }
+            });
+            setTimeout(executeQuery, 10000);
+        }
+
+        $(document).ready(function () {
+            executeQuery();
+        });
+    </script>
+</body>
+
+</html>

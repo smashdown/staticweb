@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-bottom: 60px;
+        }
+
+        /* Custom container */
+
+        .container {
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+
+        .container>hr {
+            margin: 60px 0;
+        }
+
+        /* Main marketing message and sign up button */
+
+        .jumbotron {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .jumbotron h1 {
+            font-size: 100px;
+            line-height: 1;
+        }
+
+        .jumbotron .lead {
+            font-size: 20px;
+            line-height: 1.25;
+        }
+
+        .jumbotron .btn {
+            font-size: 18px;
+            min-width: 300px;
+            padding: 14px 24px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h3>Common JS Interface Test</h3>
+            <p class="lead">since Wowbox 2.9.0, we have made common javascript interfaces bellow</p>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickSendSMS()">Send SMS</a>
+            <br>
+            <br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickDialPhone()">Dial Phone</a>
+            <br>
+            <br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickListDialog1()">List Dialog 1</a>
+            <br>
+            <br>
+
+        </div>
+
+    </div>
+    <script>
+        window.callbackSendSMS = function (err, success) {
+            if (err) {
+                if (err.permission_denied) {
+                    if (err.never_show_again) {
+                        alert('We need permission to save file into your device. go to settings and update permission please');
+                    } else {
+                        alert('We need permission to save file into your device.');
+                    }
+                } else {
+                    if (err.message) {
+                        alert(err.message);
+                    } else {
+                        alert('something went wrong');
+                    }
+                }
+                return;
+            } else {
+                alert('The sms has been sent');
+            }
+        };
+
+        window.onOkClickSnackBar = function (err, success) {
+            if (err) {
+                return;
+            } else {
+                alert('SnackBar callback was called');
+            }
+        };
+
+        function onClickSendSMS() {
+            card.sendSMS('+66627866063', 'hello sms', JSON.stringify({ callback: 'callbackSendSMS' }));
+        }
+        function onClickDialPhone() {
+            card.dialPhoneNumber('+66627866063', JSON.stringify({ callback: 'callbackSendSMS' }));
+        }
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+
+</body>
+
+</html>

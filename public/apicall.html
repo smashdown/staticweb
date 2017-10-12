@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-bottom: 60px;
+        }
+
+        /* Custom container */
+
+        .container {
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+
+        .container>hr {
+            margin: 60px 0;
+        }
+
+        /* Main marketing message and sign up button */
+
+        .jumbotron {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .jumbotron h1 {
+            font-size: 100px;
+            line-height: 1;
+        }
+
+        .jumbotron .lead {
+            font-size: 20px;
+            line-height: 1.25;
+        }
+
+        .jumbotron .btn {
+            font-size: 18px;
+            min-width: 300px;
+            padding: 14px 24px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h3>API Call Test</h3>
+            <p class="lead">since Wowbox 2.9.0</p>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickApiCall()">API call - fetchRelated</a>
+            <br>
+            <br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickUpdateGeolocation()">API call - updateUserLocation</a>
+            <br>
+            <br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickPostGcm()">API call - postGcm</a>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+
+    </div>
+    <script>
+        window.onApiCalled = function (err, success) {
+            if (err) {
+                alert(JSON.stringify(err));
+            } else {
+                alert(JSON.stringify(success));
+            }
+        };
+
+        function onClickApiCall() {
+            var errorMessage = card.apiCall(
+                JSON.stringify({
+                    method: 'GET',
+                    path: '/api/cards/5643/related',
+                    query_params: {
+                        searchQuery: '{ "types": ["Lifestyle", "Entertainment"] }',
+                        style: 13,
+                        count: 10
+                    },
+                    callback: 'onApiCalled'
+                }));
+            if (errorMessage) {
+                alert(errorMessage);
+            }
+        }
+
+        function onClickUpdateGeolocation() {
+            var errorMessage = card.apiCall(
+                JSON.stringify({
+                    method: 'PUT',
+                    path: '/api/user/geolocation',
+                    body: {
+                        geolocation: 'Khulna'
+                    },
+                    callback: 'onApiCalled'
+                }));
+            if (errorMessage) {
+                alert(errorMessage);
+            }
+        }
+
+        function onClickPostGcm() {
+            var errorMessage = card.apiCall(
+                JSON.stringify({
+                    method: 'POST',
+                    path: '/api/notifications/register',
+                    body: {
+                        registration_id: 'aaa',
+                        device_id: 'bbb'
+                    },
+                    callback: 'onApiCalled'
+                }));
+            if (errorMessage) {
+                alert(errorMessage);
+            }
+        }
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+
+</body>
+
+</html>

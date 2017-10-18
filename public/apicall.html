@@ -60,6 +60,7 @@
             <br>
             <br>
             <a id="postgcm" class="btn btn-medium btn-success" href="#" onclick="onClickPostGcm()">API call - postGcm</a>
+            <div id="result"></div>
             <br>
             <br>
             <br>
@@ -69,13 +70,19 @@
 
     </div>
     <script>
+        window.api_result = '';
         window.onApiCalled = function (err, success) {
             if (err) {
-                alert(JSON.stringify(err));
+                alert('error=' + JSON.stringify(err));
             } else {
-                alert(JSON.stringify(success));
+                // alert('succeed=' + JSON.stringify(success));
+                document.getElementById('result').textContent = JSON.stringify(success);
             }
         };
+
+        function setResult(arg) {
+            result = arg;
+        }
 
         function onClickApiCall() {
             var errorMessage = card.apiCall(
@@ -85,7 +92,8 @@
                     query_params: {
                         searchQuery: '{ "types": ["Lifestyle", "Entertainment"] }',
                         style: 13,
-                        count: 10
+                        count: 1,
+                        type: 'Entertainment'
                     },
                     callback: 'onApiCalled'
                 }));

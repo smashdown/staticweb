@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.smashdown.wowbox",
+    "sha256_cert_fingerprints":
+    ["DA:9F:3B:A6:EF:B7:09:C3:DE:34:50:D4:0A:75:88:96:46:20:95:81:62:C3:2E:E7:94:C0:0F:96:23:B2:BD:1E"]
+  }
+}]

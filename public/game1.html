@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SolarsJS - Fussball</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="description" content="SolarJS Fussball">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="SolarJS" />
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1.01, minimum-scale=1, minimal-ui">
+        <link href="css1.css" rel="stylesheet" type="text/css" />
+        <script>
+      // Package-ID
+      window.famobi_gameID = "soccertastic";
+      window.famobi_gameJS = ["min_simple.js", function(){
+          win.famobi_onload();
+      }];
+
+      (function (document, url, fgJS, firstJS) {
+              fgJS = document.createElement('script');
+              firstJS = document.getElementsByTagName('script')[0];
+              fgJS.src = url + encodeURIComponent(document.location.href);
+              firstJS.parentNode.insertBefore(fgJS, firstJS);
+      })(document, 'fg_api_local/initapi.js?e=');
+  </script>
+    </head>
+    <body>
+</body>
+</html>

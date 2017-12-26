@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, shrink-to-fit=no">
+        <title>Soccertastic</title>
+    </head>
+    <body>
+        <style>
+      
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Regular.ttf');
+                  font-weight: normal;
+                  font-weight: 400;
+                  font-style: normal;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Semibold.ttf');
+                  font-weight: 500;
+                  font-style: normal;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Bold.ttf');
+                  font-weight: bold;
+                  font-weight: 700;
+                  font-style: normal;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Italic.ttf');
+                  font-weight: normal;
+                  font-weight: 400;
+                  font-style: italic;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-BoldItalic.ttf');
+                  font-weight: bold;
+                  font-weight: 700;
+                  font-style: italic;
+              }
+              @font-face {
+                  font-family: 'Nafees';
+                  src: url('/content/fonts/Nafees.ttf');
+              }
+              @font-face {
+                  font-family: 'Pyidaungsu';
+                  /* First src url is for webview on mobiles, Second is for preview on admin */
+                  src: url('/content/fonts/Pyidaungsu.ttf'),
+                       url('https://api.wowbox.telenor.io/content/fonts/Pyidaungsu.ttf');
+              }
+              @font-face {
+                  font-family: 'Zawgyi-One';
+                  src: url('/content/fonts/Zawgyi-One.ttf'),
+                       url('https://api.wowbox.telenor.io/content/fonts/Zawgyi-One.ttf');
+              }
+              body {
+                  font-size: 16px;
+              }
+              .urdu {
+                  direction: rtl;
+                  font-family: 'Nafees';
+                  font-weight: 400;
+              }
+              .myanmar {
+                  font-weight: 400;
+                  line-height: 1.8;
+                  font-size: 16px;
+              }
+              .myanmar.unicode {
+                  font-family: 'Pyidaungsu';
+              }
+      
+              .myanmar.zawgyi {
+                  font-family: 'Zawgyi-One';
+              }
+      a {
+        text-decoration: none;
+      }
+
+      html, body {
+        font-family: "Open Sans", Zawgyi-One;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      .contents {
+        text-align: center;
+        font-size: 16px;
+      }
+
+      .contents, .contents > iframe {
+        height: 100%;
+        width: 100%;
+      }
+
+    </style>
+        <div id="mainContent" class="contents">
+            <iframe id="gameContent" frameBorder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts"></iframe>
+        </div>
+        <script>
+      function appendUserId(err, result) {
+        var gameContent = document.querySelector('#gameContent');
+
+        if (err) {
+          gameContent.src = 'https://api.wowbox.telenor.io/content/games/famobi/soccertastic-v3/index.html';
+        } else {
+          gameContent.src = 'https://api.wowbox.telenor.io/content/games/famobi/soccertastic-v3/index.html?type=wow&m=' + result.encryptedId;
+        }
+      }
+
+      window.onload = function() {
+          appendUserId('No user tracking');
+          // Hack to fit canvas on iOS screen 
+          if(/iPad|iPhone|iPod/.test(navigator.userAgent) && (/famobi\/red-head|stones-of-pharaoh/).test('https://api.wowbox.telenor.io/content/games/famobi/soccertastic-v3/index.html')){
+            document.querySelector('meta[name="viewport"]').setAttribute("content", "shrink-to-fit=no");
+          }
+      }
+    </script>
+    </body>
+</html>

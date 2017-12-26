@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+        <title>Wow Music (Gakk media)</title>
+    </head>
+    <body>
+        <style>
+      
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Regular.ttf');
+                  font-weight: normal;
+                  font-weight: 400;
+                  font-style: normal;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Semibold.ttf');
+                  font-weight: 500;
+                  font-style: normal;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Bold.ttf');
+                  font-weight: bold;
+                  font-weight: 700;
+                  font-style: normal;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-Italic.ttf');
+                  font-weight: normal;
+                  font-weight: 400;
+                  font-style: italic;
+              }
+              @font-face {
+                  font-family: 'Open Sans';
+                  src: url('/content/fonts/OpenSans-BoldItalic.ttf');
+                  font-weight: bold;
+                  font-weight: 700;
+                  font-style: italic;
+              }
+              @font-face {
+                  font-family: 'Nafees';
+                  src: url('/content/fonts/Nafees.ttf');
+              }
+              @font-face {
+                  font-family: 'Pyidaungsu';
+                  /* First src url is for webview on mobiles, Second is for preview on admin */
+                  src: url('/content/fonts/Pyidaungsu.ttf'),
+                       url('https://api.wowbox.telenor.io/content/fonts/Pyidaungsu.ttf');
+              }
+              @font-face {
+                  font-family: 'Zawgyi-One';
+                  src: url('/content/fonts/Zawgyi-One.ttf'),
+                       url('https://api.wowbox.telenor.io/content/fonts/Zawgyi-One.ttf');
+              }
+              body {
+                  font-size: 16px;
+              }
+              .urdu {
+                  direction: rtl;
+                  font-family: 'Nafees';
+                  font-weight: 400;
+              }
+              .myanmar {
+                  font-weight: 400;
+                  line-height: 1.8;
+                  font-size: 16px;
+              }
+              .myanmar.unicode {
+                  font-family: 'Pyidaungsu';
+              }
+      
+              .myanmar.zawgyi {
+                  font-family: 'Zawgyi-One';
+              }
+      body {
+        font-family: "Open Sans", Zawgyi-One;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      img {
+          max-width: 100%;
+      }
+
+      .byText {
+        color: #aaa;
+        line-height: 0.9em;
+      }
+
+      .controls {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .controls button {
+        background: linear-gradient(#ffffff, #cccccc), #c9c5c9;
+        border-radius: 120px;
+        border: 0 solid #d0d0d0;
+        box-shadow: 0 0.36em 0.42em rgba(0, 0, 0, 0.4);
+        display: inline-block;
+        height: 80px;
+        outline: none;
+        position: relative;
+        width: 80px;
+      }
+
+      .controls button:hover {
+        background: linear-gradient(#f5f5f5, #b9b9b9), #c9c5c9;
+      }
+
+      .controls button:before,
+      .controls button:after {
+        content: " ";
+        position: absolute;
+      }
+
+      .controls button:active {
+        box-shadow: 0 0.12em 0.18em rgba(0, 0, 0, 0.4);
+        top: 0.3em;
+      }
+
+      .controls .play:before {
+        border: 24px solid transparent;
+        border-left-color: rgba(100, 100, 100, 0.8);
+        border-left-width: 36px;
+        height: 0;
+        left: 28px;
+        top: 16px;
+        width: 0;
+        z-index: 2;
+      }
+
+      .controls .play:hover:before {
+        border-left-color: rgba(36, 36, 36, 0.8);
+      }
+
+      .controls .pause:before,
+      .controls .pause:after {
+        background-color: rgba(100, 100, 100, 0.8);
+        display: block;
+        height: 40px;
+        left: 22px;
+        top: 22px;
+        width: 16px;
+      }
+
+      .controls .pause:after {
+        left: 43px;
+      }
+
+      .controls .pause:hover:before,
+      .controls .pause:hover:after {
+        background-color: rgba(36, 36, 36, 0.8);
+      }
+
+      .finePrintText {
+        font-size: 0.6em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        opacity: 0.6;
+      }
+
+      .header {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        background-size: contain;
+        width: 250px;
+        height: 250px;
+        background-repeat: no-repeat;
+      }
+
+      .title {
+        border-bottom: 1px solid #666;
+        color: #00ace7;
+        font-weight: bold;
+        font-size: 1.6em;
+        margin: 0.6em 20px 0.2em;
+        padding-bottom: 0.3em;
+      }
+
+      .mainText {
+        color: #21282e;
+        font-size: 1.2em;
+        margin: 8px 10px 0;
+      }
+
+      .downloadButton {
+        background-color: transparent;
+        text-decoration: underline;
+        border: none;
+        color: #0000EE;
+        cursor: pointer;
+        font-size: 1em;
+      }
+
+      .downloadButtonClicked{
+        color: #551A8B;
+      }
+
+      .downloadButton:focus{
+        outline:none;
+      }
+
+    </style>
+        <div class="title">WowMusic</div>
+        <div class="mainText">
+      Pagol Toke Chhara
+      
+            <div class="byText">by</div>
+      Parvez
+        </div>
+        <div class="finePrintText">Press play for free streaming - no data traffic will be charged</div>
+        <div class="header" style="background-color: grey; background-image:url(https://api.wowbox.telenor.io/content/images/gakkmedia/wow/Pagol.jpg)">
+            <div class="controls">
+                <button id="playerButton" class="streamingplayer play"
+                data-stream-url="https://api.wowbox.telenor.io/content/music/gakkmedia/wow/PagolTokeChhara_Parvez.mp3"></button>
+            </div>
+        </div>
+        <Button class="downloadButton" data-title="Pagol Toke Chhara"
+            data-download-url="https://s3-ap-southeast-1.amazonaws.com/wowbox-storage/music/gakkmedia/wow/PagolTokeChhara_Parvez.mp3">
+      Download now!
+    </Button>
+        <div class="finePrintText">Downloading may cause data charges.  (File size: 4.80 MB)</div>
+        <hr/>
+        <div class="mainText">
+      Ghum Bhanga
+      
+            <div class="byText">by</div>
+      Minar
+        </div>
+        <div class="finePrintText">Press play for free streaming - no data traffic will be charged</div>
+        <div class="header" style="background-color: grey; background-image:url(https://api.wowbox.telenor.io/content/images/gakkmedia/wow/GhumBhangaMinarRahman.jpg)">
+            <div class="controls">
+                <button id="playerButton" class="streamingplayer play"
+                data-stream-url="https://api.wowbox.telenor.io/content/music/gakkmedia/wow/GhumBhanga_MinarRahman.mp3"></button>
+            </div>
+        </div>
+        <Button class="downloadButton" data-title="Ghum Bhanga"
+            data-download-url="https://s3-ap-southeast-1.amazonaws.com/wowbox-storage/music/gakkmedia/wow/GhumBhanga_MinarRahman.mp3">
+      Download now!
+    </Button>
+        <div class="finePrintText">Downloading may cause data charges.  (File size: 3.74 MB)</div>
+        <hr/>
+        <div class="mainText">
+      Mon Janala
+      
+            <div class="byText">by</div>
+      Partha Majumder feat Partha Barua
+        </div>
+        <div class="finePrintText">Press play for free streaming - no data traffic will be charged</div>
+        <div class="header" style="background-color: grey; background-image:url(https://api.wowbox.telenor.io/content/images/gakkmedia/wow/MonJanalaParthaMazumderFeatParthoBaruya.jpg)">
+            <div class="controls">
+                <button id="playerButton" class="streamingplayer play"
+                data-stream-url="https://api.wowbox.telenor.io/content/music/gakkmedia/wow/MonJanala_ParthoBaruya.mp3"></button>
+            </div>
+        </div>
+        <Button class="downloadButton" data-title="Mon Janala"
+            data-download-url="https://s3-ap-southeast-1.amazonaws.com/wowbox-storage/music/gakkmedia/wow/MonJanala_ParthoBaruya.mp3">
+      Download now!
+    </Button>
+        <div class="finePrintText">Downloading may cause data charges.  (File size: 3.66 MB)</div>
+        <hr/>
+        <p>Stream GP Music and win passes to Tahsan&#x27;s concert. Download the 
+            <a href="#" onclick="openLinkUrl('http://bit.ly/GPMApp');">App</a> or visit the
+            <a href="#" onclick="openLinkUrl('http://bit.ly/GP-Music');">Website</a>
+        </p>
+        <audio class="player" loop></audio>
+        <script>
+      function openLinkUrl(url) {
+        card.openURL(url);
+      }
+
+      window.onload = function() {
+
+        var downloading = false;
+        var audio = new Audio();
+
+        window.onTrackDownloaded = function(err, success) {
+          downloading = false;
+
+          if (err) {
+            alert('There was an error downloading the track. Please check your network connection');
+          }
+        };
+
+        var downloadClicked = function (songTitle, fileUrl) {
+          if (downloading) {
+            return;
+          }
+          downloading = true;
+          card.postEvent('download');
+          card.downloadFile(fileUrl, songTitle, 'WowBox free track of the day', 'audio',
+            JSON.stringify({ callback: 'onTrackDownloaded'}));
+        };
+
+        var resetOtherPlayerIcons = function(icons, index) {
+          for (var i = 0; i < icons.length; i++) {
+            if (index !== i) {
+              icons[i].classList.remove('pause');
+              icons[i].classList.add('play');
+            }
+          }
+        };
+
+        // Start streaming, need a source to put on an audio element.
+        var streamUrl = function (fileUrl) {
+          var player = document.querySelector('.player');
+          if (audio.src === fileUrl) {
+            if (!audio.paused) {
+              card.postEvent('streamPause');
+              audio.pause();
+            } else {
+              card.postEvent('streamPlay');
+              audio.play();
+            }
+          } else {
+            card.postEvent('streamStart');
+            audio.src = fileUrl;
+            audio.play();
+          }
+        };
+
+        var buttons = document.getElementsByClassName('downloadButton');
+
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].addEventListener('click', (function(i) {
+            return function() {
+              var title = buttons[i].dataset.title;
+              var downloadUrl = buttons[i].dataset.downloadUrl;
+              buttons[i].classList.add('downloadButtonClicked');
+
+              downloadClicked(title, downloadUrl);
+            }
+           })(i));
+        }
+
+
+        var player = document.getElementsByClassName('streamingplayer');
+
+        for (var i = 0; i < player.length; i++) {
+          player[i].addEventListener('click', (function(i) {
+            return function() {
+              var fileUrl = player[i].dataset.streamUrl;
+              streamUrl(fileUrl);
+              player[i].classList.toggle('play');
+              player[i].classList.toggle('pause');
+              resetOtherPlayerIcons(player, i);
+            }
+          })(i));
+        }
+      }
+    
+        </script>
+    </body>
+</html>

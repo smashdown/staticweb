@@ -11,6 +11,4 @@ router.get('/:cardId', function(req, res, next) {
   res.end();
 });
 
-
-
 module.exports = router;

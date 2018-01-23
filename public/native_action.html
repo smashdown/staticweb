@@ -54,10 +54,13 @@
 
             <a href="wowbox://page/Store">wowbox://page/Store</a><br><br>
 
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickOpenUrl()">openUrl()</a><br><br>
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickInsufficientSnackBar()">performNativeAction
+            <a class="btn btn-small btn-success" href="#" onclick="onClickOpenUrl1()">openURL()</a><br><br>
+            <a class="btn btn-small btn-success" href="#" onclick="onClickOpenUrl2()">openURL('data_charge_popup_enabled')</a><br><br>
+            <a class="btn btn-small btn-success" href="#" onclick="onClickOpenUrl3()">openURLWithoutDataChargePopup()</a><br><br>
+            <br><br><br><br>
+            <a class="btn btn-small btn-success" href="#" onclick="onClickInsufficientSnackBar()">performNativeAction<br/>
                 ('showInsufficientBalanceSnackBar')</a><br><br>
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickIsConnectionAvailable()">performNativeAction
+            <a class="btn btn-small btn-success" href="#" onclick="onClickIsConnectionAvailable()">performNativeAction<br/>
                 ('isConnectionAvailable')</a><br><br>
             
         </div>
@@ -86,21 +89,33 @@
             } 
         };
 
-        function onClickOpenUrl() {
-            // ** Old code **
-            // card.openURL('https://www.google.com', 
-            //     JSON.stringify({
-            //         callback: 'openUrlCallback'
-            //     })
-            // );
-
+        function onClickOpenUrl1() {
+           
             card.openURL('https://www.google.com', 
                 JSON.stringify({
-                    callback: 'openUrlCallback',
-                    show_data_charge_popup: false // defult true
+                    callback: 'openUrlCallback'
                 })
             );
         }
+
+        function onClickOpenUrl2() {
+           
+           card.openURL('https://www.google.com', 
+               JSON.stringify({
+                   callback: 'openUrlCallback',
+                   data_charge_popup_enabled: false // default true
+               })
+           );
+       }
+
+       function onClickOpenUrl3() {
+           
+           card.openURLWithoutDataChargePopup('https://www.google.com', 
+               JSON.stringify({
+                   callback: 'openUrlCallback'
+               })
+           );
+       }
 
         function onClickInsufficientSnackBar() {
             // ** Old cod **
@@ -134,7 +149,7 @@
             JSON.stringify ({
                 'callback': 'performNativeActionCallback', 
                 'case': 'claim', // or 'buy'
-                'message': 'You cannot claim or buy something without internet connection!!!'
+                'no_network_message': 'You cannot claim or buy something without internet connection!!!'
                 })
             );
         }

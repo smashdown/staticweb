@@ -52,8 +52,6 @@
             <h3>Common JS Interface Test</h3>
             <p class="lead">since Wowbox 2.9.0, we have made common javascript interfaces bellow</p>
 
-            <a href="wowbox://page/Store">wowbox://page/Store</a><br><br>
-
             <a class="btn btn-small btn-success" href="#" onclick="onClickOpenUrl1()">openURL()</a><br><br>
             <a class="btn btn-small btn-success" href="#" onclick="onClickOpenUrl2()">openURL('data_charge_popup_enabled')</a><br><br>
             <a class="btn btn-small btn-success" href="#" onclick="onClickOpenUrl3()">openURLWithoutDataChargePopup()</a><br><br>
@@ -118,7 +116,7 @@
        }
 
         function onClickInsufficientSnackBar() {
-            // ** Old cod **
+            // ** Old code **
             // card.performNativeAction('showInsufficientBalanceSnackBar', 
             // JSON.stringify ({
             //     'callback': 'showInsufficientBalanceSnackBarCallback', 
@@ -137,7 +135,7 @@
         }
 
         function onClickIsConnectionAvailable() {
-            // ** Old cod **
+            // ** Old code **
             // card.performNativeAction('isConnectionAvailable', 
             // JSON.stringify ({
             //     'callback': 'isConnectionAvailableCallback', 
@@ -149,7 +147,7 @@
             JSON.stringify ({
                 'callback': 'performNativeActionCallback', 
                 'case': 'claim', // or 'buy'
-                'no_network_message': 'You cannot claim or buy something without internet connection!!!'
+                'message': 'You cannot claim or buy something without internet connection!!!'
                 })
             );
         }

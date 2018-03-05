@@ -54,19 +54,12 @@
 
             <a href="wowbox://page/Store">wowbox://page/Store</a><br><br>
 
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickOpenCardOnNewWindow()">Open card(new window)</a><br><br>
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickOpenCard()">Open card(no new window)</a><br><br>
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickDialog1()">Simple Dialog</a><br><br>
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickListDialog1()">List Dialog 1</a><br><br>
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickListDialog2()">List Dialog 2</a><br><br>
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickInputDialog()">Simple Input Dialog</a><br><br>
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickSnackBar()">Snack Bar</a><br><br>
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickCloseCard()">Close card</a><br><br>
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickGoToPage()">Go back to page</a><br><br> Test it
-            over android 6.0 marshmellow<br>
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickFileDownload()">Download permission denied</a><br><br>
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickAppString()">Read app's string</a><br><br>
-            <a class="btn btn-medium btn-success" href="#" onclick="onClickScreenSize()">Get device's screen size</a><br><br>
+            
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickSnackBar1()">Snack Bar</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickSnackBar2()">Snack Bar</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickSnackBar3()">Snack Bar</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickSnackBar4()">Snack Bar</a><br><br>
+            
         </div>
 
     </div>
@@ -120,11 +113,11 @@
             }
         };
 
-        window.onInputDialogCallback = function (err, success) {
+        window.isConnectionAvailableCallback = function (err, success) {
             if (err) {
                 return;
             } else {
-                alert('input = ' + success.text);
+                alert('input = ' + success.result);
             }
         };
 
@@ -215,7 +208,29 @@
             }
         }
 
-        function onClickSnackBar() {
+        function onClickSnackBar1() {
+            var errorMessage = card.showSnackBar('this is message');
+            if (errorMessage) {
+                console.log(errorMessage);
+            }
+        }
+
+        function onClickSnackBar2() {
+            var errorMessage = card.showSnackBar('this is message', 3000);
+            if (errorMessage) {
+                console.log(errorMessage);
+            }
+        }
+
+        function onClickSnackBar3() {
+            card.performNativeAction('isConnectionAvailable', JSON.stringify({'callback': 'isConnectionAvailableCallback'}));
+            // var errorMessage = card.showSnackBar('this is message', 3000, undefined);
+            // if (errorMessage) {
+            //     console.log(errorMessage);
+            // }
+        }
+
+        function onClickSnackBar4() {
             var errorMessage = card.showSnackBar('this is message', 3000,
                 JSON.stringify({
                     'button_text': 'OK',

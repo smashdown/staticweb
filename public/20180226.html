@@ -50,25 +50,13 @@
 <body>
 <div class="cover">
     <h2>Version 2</h2>
-    <a class="btn btn-medium btn-success" href="#" onclick="onClickSnackBar1()">Snack Bar</a><br><br>
+    <a class="btn btn-medium btn-success" href="#" onclick="showToast()">Show toast</a><br><br>
+    
 </div>
-<script>
-    window.onFacebookShared = function (err, success) {
-        console.log(err);
-        if (err) {
-            if (err.code && err.code == 1) {
-                alert('Network disconnected');
-            } else {
-                alert('Something went wrong in facebook SDK');
-            }
-            return;
-        } else {
-            alert('Facebook sharing has done successfully');
-        }
-    };
-
-    function facebookShare1() {
-        card.postToFacebook('https://app.wowbox.telenor.io/deeplink/cards/8317/details', JSON.stringify({ 'callback': 'onFacebookShared'}), '');
+<script type="text/javascript">
+    
+    function showToast() {
+        Native.toast('Toast test');
     }
 
 </script>

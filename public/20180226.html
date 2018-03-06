@@ -51,6 +51,7 @@
 <div class="cover">
     <h2>Version 2</h2>
     <a class="btn btn-medium btn-success" href="#" onclick="showToast()">Show toast</a><br><br>
+    <a class="btn btn-medium btn-success" href="#" onclick="log()">Print log</a><br><br>
     
 </div>
 <script type="text/javascript">
@@ -59,6 +60,9 @@
         Native.toast('Toast test');
     }
 
+    function log() {
+        Native.log(Date.now() + ' : Toast test');
+    }
 </script>
 </body>
 </html>

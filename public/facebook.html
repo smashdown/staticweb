@@ -75,11 +75,15 @@
 
         function facebookShare1() {
             // old template 
+            //   - old client - will ignore all params and make url itself
+            //   - new client - will ignore all params and make url itself
             card.postToFacebook('this is title', 'this is content desc', 'https://image.url.com');
         }
 
         function facebookShare2() {
             // new templates
+            //   - old client - will ignore all params and make url itself
+            //   - new client - will just deliver the url to facebook SDK
             card.postToFacebook('https://app.wowbox.telenor.io/deeplink/cards/8317/details', JSON.stringify({ 'callback': 'onFacebookShared'}), '');
         }
 

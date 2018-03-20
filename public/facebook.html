@@ -52,7 +52,8 @@
             <h3>Common JS Interface Test</h3>
             <p class="lead">since Wowbox 2.9.0, we have made common javascript interfaces bellow</p>
 
-            <a class="btn btn-medium btn-success" href="#" onclick="facebookShare1()">Facebook Share</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="facebookShare1()">Facebook on under v2.11</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="facebookShare2()">Facebook on over v2.11</a><br><br>
             
         </div>
 
@@ -73,6 +74,12 @@
         };
 
         function facebookShare1() {
+            // old template 
+            card.postToFacebook('this is title', 'this is content desc', 'https://image.url.com');
+        }
+
+        function facebookShare2() {
+            // new templates
             card.postToFacebook('https://app.wowbox.telenor.io/deeplink/cards/8317/details', JSON.stringify({ 'callback': 'onFacebookShared'}), '');
         }
 

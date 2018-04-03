@@ -345,20 +345,26 @@
       <p class="extra-link ">
         <a class="link link-button">Tell me where are you</a>
       </p>
+      <p id="demo"></p>
     </p>
 
   </div>
   <script>
+    var x = document.getElementById("demo");
+
     window.onload = function () {
 
       geolocationCallback = function (err, success) {
         if (!err) {
           alert("lat=" + success.latitude + "\nlng=" + success.longitude);
+          x.innerHTML = "Latitude: " + success.latitude + "<br>Longitude: " + success.longitude;
         } else {
           if (err.permission_denied) {
             alert("permission denied");
+            x.innerHTML = "permission denied";
           } else {
             alert(err.message);
+            x.innerHTML = err.message;
           }
         }
       }

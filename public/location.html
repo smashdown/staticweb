@@ -360,8 +360,8 @@
           x.innerHTML = "Latitude: " + success.latitude + "<br>Longitude: " + success.longitude;
         } else {
           if (err.permission_denied) {
-            alert("permission denied");
-            x.innerHTML = "permission denied";
+            alert("Permission Denied!!!\nDon\'t ask again : " + err.never_show_again);
+            x.innerHTML = "Permission Denied!!!<BR>Don\'t ask again : " + err.never_show_again;
           } else {
             alert(err.message);
             x.innerHTML = err.message;

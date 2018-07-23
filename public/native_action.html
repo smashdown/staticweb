@@ -50,32 +50,33 @@
     <div class="container">
         <div class="jumbotron">
             <h3>Common JS Interface Test</h3>
-            <p class="lead">since Wowbox 2.9.0, we have made common javascript interfaces bellow</p>
+            <br><br>
 
-            <a class="btn btn-small btn-success" href="#" onclick="onClickOpenUrl1()">openURL()</a><br><br>
-            <a class="btn btn-small btn-success" href="#" onclick="onClickOpenUrl2()">openURL('data_charge_popup_enabled')</a><br><br>
-            <a class="btn btn-small btn-success" href="#" onclick="onClickOpenUrl3()">openURLWithoutDataChargePopup()</a><br><br>
-            <br><br><br><br>
-            <a class="btn btn-small btn-success" href="#" onclick="onClickInsufficientSnackBar()">performNativeAction<br/>
-                ('showInsufficientBalanceSnackBar')</a><br><br>
             <a class="btn btn-small btn-success" href="#" onclick="onClickIsConnectionAvailable()">performNativeAction<br/>
                 ('isConnectionAvailable')</a><br><br>
-            
+            <a class="btn btn-small btn-success" href="#" onclick="onClickInsufficientSnackBar()">performNativeAction<br/>
+                ('showInsufficientBalanceSnackBar')</a><br><br>
+            <a class="btn btn-small btn-success" href="#" onclick="onClickShowAlreadyClaimedOfferSnackBar()">performNativeAction<br/>
+                ('showAlreadyClaimedOfferSnackBar')</a><br><br>
+            <a class="btn btn-small btn-success" href="#" onclick="onClickWowboxClientVersion()">performNativeAction<br/>
+                ('wowboxClientVersion')</a><br><br>
+            <a class="btn btn-small btn-success" href="#" onclick="onClickShowDataPackInfoDialog()">performNativeAction<br/>
+                ('showDataPackInfoDialog')</a><br><br>
+            <a class="btn btn-small btn-success" href="#" onclick="onClickShowShareDialog()">performNativeAction<br/>
+                ('showShareDialog')</a><br><br>
+            <a class="btn btn-small btn-success" href="#" onclick="onClickWowboxAppVersion()">performNativeAction<br/>
+                ('wowboxAppVersion')</a><br><br>
+            <a class="btn btn-small btn-success" href="#" onclick="onClickShowCommonDialog()">performNativeAction<br/>
+                ('showCommonDialog')</a><br><br>
+            <a class="btn btn-small btn-success" href="#" onclick="onClickAnimateTokenButton()">performNativeAction<br/>
+                ('animateTokenButton')</a><br><br>
+            <a class="btn btn-small btn-success" href="#" onclick="onClickAnimateMoneyButton()">performNativeAction<br/>
+                ('animateMoneyButton')</a><br><br>
+                    
         </div>
 
     </div>
     <script>
-        window.openUrlCallback = function (err, success) {
-            if (err) {
-                if (err.message) {
-                    alert(err.message);
-                } else {
-                    alert('there is a error when you open this url.');
-                }
-                return;
-            } 
-        };
-
         window.performNativeActionCallback = function (err, success) {
             if (err) {
                 if (err.message) {
@@ -84,74 +85,75 @@
                     alert('there is a error when you call this method');
                 }
                 return;
-            } 
+            } else {
+                alert(JSON.stringify (success));
+            }
         };
 
-        function onClickOpenUrl1() {
-           
-            card.openURL('https://www.google.com', 
-                JSON.stringify({
-                    callback: 'openUrlCallback'
-                })
-            );
-        }
-
-        function onClickOpenUrl2() {
-           
-           card.openURL('https://www.google.com', 
-               JSON.stringify({
-                   callback: 'openUrlCallback',
-                   data_charge_popup_enabled: false // default true
-               })
-           );
-       }
-
-       function onClickOpenUrl3() {
-           
-           card.openURLWithoutDataChargePopup('https://www.google.com', 
-               JSON.stringify({
-                   callback: 'openUrlCallback'
-               })
-           );
-       }
-
         function onClickInsufficientSnackBar() {
-            // ** Old code **
-            // card.performNativeAction('showInsufficientBalanceSnackBar', 
-            // JSON.stringify ({
-            //     'callback': 'showInsufficientBalanceSnackBarCallback', 
-            //     'case': 'tokens', 
-            //     'price': 99999999 })
-            // );
-
             card.performNativeAction('showInsufficientBalanceSnackBar', 
             JSON.stringify ({
                 'callback': 'performNativeActionCallback', 
                 'case': 'tokens', 
-                'message': 'This is server size customized message!',
+                'message': 'This is server size customized message!', // since 2.10
                 'price': 99999999 })
             );
             
         }
 
         function onClickIsConnectionAvailable() {
-            // ** Old code **
-            // card.performNativeAction('isConnectionAvailable', 
-            // JSON.stringify ({
-            //     'callback': 'isConnectionAvailableCallback', 
-            //     'case': 'claim' // or 'buy'
-            //     })
-            // );
-
             card.performNativeAction('isConnectionAvailable', 
             JSON.stringify ({
                 'callback': 'performNativeActionCallback', 
                 'case': 'claim', // or 'buy'
-                'message': 'This is server size customized message!'
+                'message': 'This is server size customized message!' // since 2.10
                 })
             );
         }
 
+        function onClickShowAlreadyClaimedOfferSnackBar() {
+            card.performNativeAction('showAlreadyClaimedOfferSnackBar', 
+            JSON.stringify ({
+                'message': 'This is server size customized message!'
+                })
+            );
+        }
+        function onClickWowboxClientVersion() {
+            card.performNativeAction('wowboxClientVersion', 
+            JSON.stringify ({
+                'callback': 'performNativeActionCallback'
+                })
+            );
+        }
+        function onClickShowDataPackInfoDialog() {
+            card.performNativeAction('showDataPackInfoDialog');
+        }
+        function onClickShowShareDialog() {
+            card.performNativeAction('showShareDialog', 
+            JSON.stringify({
+                title: 'title',
+                message: 'message',
+                purpose: "user_referral"
+            }));
+        }
+        function onClickWowboxAppVersion() {
+            card.performNativeAction('wowboxAppVersion', 
+            JSON.stringify({
+                'callback': 'performNativeActionCallback'
+            }));
+        }
+        function onClickShowCommonDialog() {
+            card.performNativeAction('showCommonDialog', 
+            JSON.stringify({
+                'htmlText': '<p>hohoho</p>'
+            }));
+        }
+        function onClickAnimateTokenButton() {
+            card.performNativeAction('animateTokenButton');
+        }
+        function onClickAnimateMoneyButton() {
+            card.performNativeAction('animateMoneyButton');
+        }
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
     

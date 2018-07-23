@@ -62,11 +62,17 @@
             <a class="btn btn-medium btn-success" href="#" onclick="onClickInputDialog()">Simple Input Dialog</a><br><br>
             <a class="btn btn-medium btn-success" href="#" onclick="onClickSnackBar()">Snack Bar</a><br><br>
             <a class="btn btn-medium btn-success" href="#" onclick="onClickCloseCard()">Close card</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickRefresh()">Refresh</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickToast()">Toast</a><br><br>
             <a class="btn btn-medium btn-success" href="#" onclick="onClickGoToPage()">Go back to page</a><br><br> Test it
             over android 6.0 marshmellow<br>
             <a class="btn btn-medium btn-success" href="#" onclick="onClickFileDownload()">Download permission denied</a><br><br>
             <a class="btn btn-medium btn-success" href="#" onclick="onClickAppString()">Read app's string</a><br><br>
             <a class="btn btn-medium btn-success" href="#" onclick="onClickScreenSize()">Get device's screen size</a><br><br>
+
+            <a class="btn btn-small btn-success" href="#" onclick="onClickOpenUrl1()">openURL()</a><br><br>
+            <a class="btn btn-small btn-success" href="#" onclick="onClickOpenUrl2()">openURL('data_charge_popup_enabled')</a><br><br>
+            <a class="btn btn-small btn-success" href="#" onclick="onClickOpenUrl3()">openURLWithoutDataChargePopup()</a><br><br>
         </div>
 
     </div>
@@ -136,9 +142,58 @@
             }
         };
 
-        
+        window.openUrlCallback = function (err, success) {
+            if (err) {
+                if (err.message) {
+                    alert(err.message);
+                } else {
+                    alert('there is a error when you open this url.');
+                }
+                return;
+            } 
+        };
+
+        window.performNativeActionCallback = function (err, success) {
+            if (err) {
+                if (err.message) {
+                    alert(err.message);
+                } else {
+                    alert('there is a error when you call this method');
+                }
+                return;
+            } 
+        };
+
+        function onClickOpenUrl1() {
+           
+            card.openURL('https://www.google.com', 
+                JSON.stringify({
+                    callback: 'openUrlCallback'
+                })
+            );
+        }
+
+        function onClickOpenUrl2() {
+           
+           card.openURL('https://www.google.com', 
+               JSON.stringify({
+                   callback: 'openUrlCallback',
+                   data_charge_popup_enabled: false // default true
+               })
+           );
+       }
+
+       function onClickOpenUrl3() {
+           
+           card.openURLWithoutDataChargePopup('https://www.google.com', 
+               JSON.stringify({
+                   callback: 'openUrlCallback'
+               })
+           );
+       }
+       
         function onClickOpenCardOnNewWindow() {
-            card.openCardDetails(0, 'http://192.168.40.88:3000/common.html');
+            card.openCardDetails(26006, '/api/cards/26006/details');
         }
 
         function onClickOpenCard() {
@@ -231,6 +286,12 @@
             card.dismiss(true);
         }
 
+        function onClickRefresh() {
+            card.refresh();
+        }
+        function onClickToast() {
+            card.toast("hello toast");
+        }
         function onClickGoToPage() {
             card.goToPage('Store');
         }

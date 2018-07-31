@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-bottom: 60px;
+        }
+        /* Custom container */
+
+        .container {
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+
+        .container>hr {
+            margin: 60px 0;
+        }
+        /* Main marketing message and sign up button */
+
+        .jumbotron {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .jumbotron h1 {
+            font-size: 100px;
+            line-height: 1;
+        }
+
+        .jumbotron .lead {
+            font-size: 20px;
+            line-height: 1.25;
+        }
+
+        .jumbotron .btn {
+            font-size: 18px;
+            min-width: 300px;
+            padding: 14px 24px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h3>Common JS Interface Test</h3>
+            <p class="lead">since Wowbox 2.9.0, we have made common javascript interfaces bellow</p>
+
+            <a href="wowbox://page/Store">wowbox://page/Store</a><br><br>
+
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickToken()">Animate token</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickBalance()">Animate balance</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickStopAnimation()">Stop Animation</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClick1()">Animate token ex1</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClick2()">Animate token ex2</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClick3()">Animate token ex3</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClick4()">Animate token ex4</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClick5()">Animate token ex5</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClick6()">Animate token ex6</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClick7()">Animate token ex7</a><br><br>
+        </div>
+
+    </div>
+    <script>
+        window.onAnimationCallback = function (err, success) {
+            if (err && err.message) {
+                alert('There was an error - ' + err.message);
+                
+                return;
+            }
+        };
+
+        function onClickToken() {
+           card.performNativeAction('animateTokenButton'); // if options is not given, will use preset bounce animation
+        }
+        function onClickBalance() {
+           card.performNativeAction('animateMoneyButton'); // if options is not given, will use preset bounce animation
+        }
+        function onClickStopAnimation() {
+            card.performNativeAction('animateTokenButton', JSON.stringify ({
+                'action': 'stop' // default == start
+            }));
+        }
+        function onClick1() {
+            card.performNativeAction('animateTokenButton', JSON.stringify ({
+                'action': 'start', // start / stop, when you set it stop, client will ignore all the other params
+                'type': 'pop', // animation name form of camel case - cannot be empty - see the available names below. 
+                'duration': 700, // millisec - default 700 on android. iOS could be defferent.
+                'repeat': 5, // integer - default=0, set it 0 when you want infinite animation.
+                'delay': 0, // long - default=0, will start anymation after this delay.
+                'callback': 'onAnimationCallback'
+            }));
+        }
+        function onClick2() {
+            card.performNativeAction('animateTokenButton', JSON.stringify ({
+                'action': 'start',
+                'type': 'fall' 
+            }));
+        }
+        function onClick3() {
+            card.performNativeAction('animateTokenButton', JSON.stringify ({
+                'action': 'start', 
+                'type': 'morph', 
+                'duration': 2000,
+                'repeat': 2, 
+                'delay': 0, 
+                'callback': 'onAnimationCallback'
+            }));
+        }
+        function onClick4() {
+            card.performNativeAction('animateTokenButton', JSON.stringify ({
+                'action': 'start',
+                'type': 'wobble', 
+                'duration': 300, 
+                'repeat': 1, 
+                'delay': 0,
+                'callback': 'onAnimationCallback'
+            }));
+        }
+        function onClick5() {
+            card.performNativeAction('animateTokenButton', JSON.stringify ({
+                'action': 'start', 
+                'type': 'slideUp',
+                'duration': 1000, 
+                'repeat': 0, 
+                'delay': 1000, 
+                'callback': 'onAnimationCallback'
+            }));
+        }
+        function onClick6() {
+            card.performNativeAction('animateTokenButton', JSON.stringify ({
+                'action': 'start',
+                'type': 'swing', 
+                'duration': 200, 
+                'repeat': 10, 
+                'delay': 0, 
+                'callback': 'onAnimationCallback'
+            }));
+        }
+        function onClick7() {
+            card.performNativeAction('animateTokenButton', JSON.stringify ({
+                'action': 'start',
+                'type': 'flash', 
+                'callback': 'onAnimationCallback'
+            }));
+        }
+        /////////////////////////////
+        // Defined Animation Types //
+        /////////////////////////////
+        // fadeIn
+        // fadeInDown
+        // fadeInLeft
+        // fadeInRight
+        // fadeInUp
+        // fadeOut
+        // fall
+        // flash
+        // flipX
+        // flipY
+        // morph
+        // pop
+        // shake
+        // slideDown
+        // slideLeft
+        // slideRight
+        // slideUp
+        // squeeze
+        // squeezeDown
+        // squeezeLeft
+        // squeezeRight
+        // squeezeUp
+        // swing
+        // wobble
+        // zoomIn
+        // zoomOut
+        /////////////////////////////
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+    
+</body>
+
+</html>

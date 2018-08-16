@@ -1,0 +1,453 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <style>
+         body {
+         padding-bottom: 60px;
+         }
+         /* Custom container */
+         .container {
+         margin: 0 auto;
+         max-width: 1000px;
+         }
+         .container>hr {
+         margin: 60px 0;
+         }
+         /* Main marketing message and sign up button */
+         .jumbotron {
+         margin: 10px 0;
+         text-align: center;
+         }
+         .jumbotron h1 {
+         font-size: 100px;
+         line-height: 1;
+         }
+         .jumbotron .lead {
+         font-size: 20px;
+         line-height: 1.25;
+         }
+         .jumbotron .btn {
+         font-size: 18px;
+         min-width: 300px;
+         padding: 14px 24px;
+         }
+         @font-face {
+         font-family: 'Open Sans';
+         src: url('/content/fonts/OpenSans-Regular.ttf');
+         font-weight: normal;
+         font-weight: 400;
+         font-style: normal;
+         }
+         @font-face {
+         font-family: 'Open Sans';
+         src: url('/content/fonts/OpenSans-Semibold.ttf');
+         font-weight: 500;
+         font-style: normal;
+         }
+         @font-face {
+         font-family: 'Open Sans';
+         src: url('/content/fonts/OpenSans-Bold.ttf');
+         font-weight: bold;
+         font-weight: 700;
+         font-style: normal;
+         }
+         @font-face {
+         font-family: 'Open Sans';
+         src: url('/content/fonts/OpenSans-Italic.ttf');
+         font-weight: normal;
+         font-weight: 400;
+         font-style: italic;
+         }
+         @font-face {
+         font-family: 'Open Sans';
+         src: url('/content/fonts/OpenSans-BoldItalic.ttf');
+         font-weight: bold;
+         font-weight: 700;
+         font-style: italic;
+         }
+         @font-face {
+         font-family: 'Nafees';
+         src: url('/content/fonts/Nafees.ttf');
+         }
+         @font-face {
+         font-family: 'Pyidaungsu';
+         /* First src url is for webview on mobiles, Second is for preview on admin */
+         src: url('/content/fonts/Pyidaungsu.ttf'),
+         url('https://api.wowbox.telenor.io/content/fonts/Pyidaungsu.ttf');
+         }
+         @font-face {
+         font-family: 'Zawgyi-One';
+         src: url('/content/fonts/Zawgyi-One.ttf'),
+         url('https://api.wowbox.telenor.io/content/fonts/Zawgyi-One.ttf');
+         }
+         body {
+         color: #21282E;
+         font-family: "Open Sans", "Zawgyi-One", sans-serif;
+         font-size: 16px;
+         margin: 0;
+         padding: 0 0 1em 0;
+         }
+         .urdu {
+         direction: rtl;
+         font-family: 'Nafees';
+         font-weight: 400;
+         }
+         .myanmar {
+         font-weight: 400;
+         line-height: 1.8;
+         font-size: 16px;
+         }
+         .myanmar.unicode {
+         font-family: 'Pyidaungsu';
+         }
+         .myanmar.zawgyi {
+         font-family: 'Zawgyi-One';
+         }
+         body {
+         font-family: "Open Sans", Zawgyi-One;
+         margin: 0;
+         padding: 0;
+         }
+         iframe {
+         border: 0;
+         height: 100%;
+         width: 100%;
+         }
+         img {
+         max-width: 100%;
+         }
+         p,h1,h2,h3,h4,h5,.lead,.title {
+         overflow-wrap: break-word;
+         word-wrap: break-word;
+         }
+         .bold {
+         font-weight: 700;
+         }
+         .capitalized {
+         text-transform: uppercase;
+         }
+         .colophon {
+         font-size: 0.7em;
+         margin-top: 0.6em;
+         }
+         .content {
+         padding: 10px;
+         }
+         .content figure {
+         margin: 0;
+         max-width: 100%;
+         }
+         .content figure img,
+         .content p img {
+         height: auto;
+         max-width: 100%;
+         width: 100%;
+         }
+         .content figure {
+         display: block;
+         padding: 10px 0;
+         }
+         .content p img {
+         display: block;
+         padding: 10px 0;
+         }
+         .content figure + h1 {
+         padding-top: 1em;
+         }
+         .content figcaption {
+         color: #21282e;
+         font-size: 0.7em;
+         min-height: 0.5em;
+         opacity: 0.5;
+         padding-left: 5px;
+         }
+         .content h1 {
+         color: #00ace7;
+         font-weight: bold;
+         font-size: 0.9em;
+         margin: 0;
+         padding: 0 10px;
+         }
+         .content li {
+         padding-left: 12px;
+         text-indent: -12px;
+         }
+         .content li:before {
+         background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMBAMAAACkW0HUAAAAElBMVEUAAAAASGoASGoASGoASGoASGpwSKNZAAAABXRSTlMAEGCvv6jklDUAAAA1SURBVHheY2BgMnFWYGBgdA0NDRFgYAkFAgcGVRAVxGAKooIZXEFUCJSCCkKVQDVAtUMNAwD41xIzEm5BlgAAAABJRU5ErkJggg==');
+         background-size: contain;
+         content: "";
+         display: inline-block;
+         height: 7px;
+         margin: 0 6px 1px 0;
+         width: 6px;
+         }
+         .content p, .content ul {
+         color: #21282e;
+         font-size: 1em;
+         margin-bottom: 1em;
+         margin-top: 0;
+         opacity: 0.8;
+         padding: 0 10px;
+         line-height: 22px;
+         }
+         .stickyBottom {
+         text-align: center;
+         padding: 0 0 10px !important;
+         background-color: #ffffff;
+         position: fixed;
+         bottom: 0;
+         background: rgba(255,255,255,1);
+         background: -webkit-gradient(left top, left bottom, color-stop(10%, rgba(255,255,255,0.7)), color-stop(80%, rgba(255,255,255,1)));
+         background: -webkit-linear-gradient(top, rgba(255,255,255, 0.7) 10%, rgba(255,255,255, 1) 80%);
+         background: linear-gradient(to bottom, rgba(255,255,255,0.7) 10%, rgba(255,255,255,1) 80%);
+         }
+         .myanmar.content p, .myanmar.content ul {
+         font-size: 1em;
+         opacity: 0.9;
+         line-height: normal;
+         }
+         .urdu.content p, .urdu.content ul {
+         font-size: 0.8em;
+         line-height: normal;
+         }
+         .content ul {
+         list-style: none;
+         }
+         .content .link {
+         padding: 10px 0;
+         text-decoration: underline;
+         color: #06c;
+         }
+         .content .extra-link {
+         padding: 25px 0 !important;
+         margin: 0 !important;
+         left: 0;
+         width: 100%;
+         opacity: 1 !important;
+         text-align: center;
+         }
+         .content .link-button {
+         background-color: #4b559b;
+         color: #ffffff;
+         padding: 8px 10px 6px;
+         min-width: 120px;
+         text-decoration: none;
+         text-align: center;
+         box-shadow: 0 2px 5px 1px #c5c5c5;
+         border-radius: 2px;
+         width: 100px;
+         display: inline-block;
+         text-transform: uppercase;
+         margin-bottom: 8px;
+         }
+         .content .link-button.pressed {
+         background-color: #6d74a5;
+         }
+         .gray {
+         color: #666;
+         }
+         .header {
+         text-align: center;
+         }
+         .hero {
+         display: block;
+         height: auto;
+         width: 100%;
+         }
+         .lead {
+         color: #00486a;
+         font-size: 1.2em;
+         margin: 0 20px;
+         }
+         .player {
+         margin-bottom: 0.7em;
+         width: 100%;
+         }
+         .player p {
+         font-size: 0.5em;
+         }
+         .title {
+         color: #00ace7;
+         font-weight: bold;
+         font-size: 1.6em;
+         margin: 0.6em 20px;
+         }
+         .dataChargesText {
+         display: block;
+         font-size: 0.6em;
+         opacity: 0.6;
+         }      
+         .facebookAndLikeContainer {
+         direction: ltr;
+         text-align: center;
+         margin: 1em 0;
+         }
+         .facebookContainer, .likeButtonContainer {
+         display: inline-block;
+         text-align: center;
+         vertical-align: top;
+         }
+         .facebookAndLikeContainer > div:not(:last-child) {
+         margin-right: 4%;
+         }
+         .facebook, .likeButton {
+         max-width: 80px;
+         }
+         @supports (display: flex) {
+         .facebookAndLikeContainer {
+         display: flex;
+         justify-content: center;
+         margin: 1em 0;
+         }
+         .facebookContainer,
+         .likeButtonContainer {
+         display: block;
+         vertical-align: initial;
+         }
+         }
+         .likeCounterText {
+         font-size: 0.6em;
+         opacity: 0.6;
+         }        
+         .ad-container {
+         margin: 16px 10px;
+         padding: 2px 0 12px;
+         border-top: 1px solid #c5c5c5;
+         border-bottom: 1px solid #c5c5c5;
+         }
+         .ad-container img {
+         display: block;
+         margin: 0 auto;
+         max-width: 100%;
+         }
+         .ad-container:before {
+         content: 'Ad';
+         text-align: right;
+         font-size: 8px;
+         color: #c5c5c5;
+         margin-bottom: 2px;
+         display: block;
+         }
+         .hidden {
+         display: none;
+         }
+         .related {
+         color: #21282e;
+         border-top: 1px solid #D8D8D8;
+         }
+         .related-article {
+         display: flex;
+         margin-bottom: 1em;
+         }
+         .related-article img {
+         width: 88px;
+         height: 72px;
+         margin-right: 1em;
+         object-fit: cover;
+         }
+         .related-article h4 {
+         font-size: 1em;
+         font-weight: normal;
+         margin: 0; 
+         }
+         @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
+         @media {
+         .myanmar.title {
+         letter-spacing: -1px;
+         }
+         }
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container">
+            <h3>Trending See All Test</h3>
+            
+            <div id="related" class="related">
+               <h4>You might be interested in</h4>
+               <div onclick="onClickCard(46880, 1);" class="related-article" id="46880" data-title="৮ জিবি র‌্যামের নকিয়ার নতুন মনস্টার ফোন" data-url="/api/cards/46880/details/2f1fb7fd4424b84682580f1b595cfa05b4936690" data-category="Lifestyle" data-position="1" data-icon="e907">
+                  <img src="https://api.wowbox.telenor.io/api/cards/images/ce9306ce55182d7c7d355cf461fda7a6630df108">
+                  <h4>৮ জিবি র‌্যামের নকিয়ার নতুন মনস্টার ফোন</h4>
+               </div>
+               <div onclick="onClickCard(48181, 2);" class="related-article" id="48181" data-title="ইলিয়াস কাঞ্চন- বাস্তবের মহানায়ক" data-url="/api/cards/48181/details/b5d635ac5b3a8a4726aa0a0a300083c01f6edda5" data-category="Lifestyle" data-position="2" data-icon="e907">
+                  <img src="https://api.wowbox.telenor.io/api/cards/images/26d51b180174e1a7792e1b5e84c486c0a31ecb57">
+                  <h4>ইলিয়াস কাঞ্চন- বাস্তবের মহানায়ক</h4>
+               </div>
+               <div onclick="onClickCard(48357, 3);" class="related-article" id="48357" data-title="চকোলেটে রূপচর্চা! " data-url="/api/cards/48357/details/8cb0766d85499462a86be603136085becf541e4e" data-category="Lifestyle" data-position="3" data-icon="e90d">
+                  <img src="https://api.wowbox.telenor.io/api/cards/images/91e414e24f5dc12122ab4aff55804e1de315a060">
+                  <h4>চকোলেটে রূপচর্চা! </h4>
+               </div>
+               <div onclick="onClickCard(46880, 4);" class="related-article" id="46880" data-title="৮ জিবি র‌্যামের নকিয়ার নতুন মনস্টার ফোন" data-url="/api/cards/46880/details/2f1fb7fd4424b84682580f1b595cfa05b4936690" data-category="Lifestyle" data-position="1" data-icon="e907">
+                <img src="https://api.wowbox.telenor.io/api/cards/images/ce9306ce55182d7c7d355cf461fda7a6630df108">
+                <h4>৮ জিবি র‌্যামের নকিয়ার নতুন মনস্টার ফোন</h4>
+             </div>
+             <div onclick="onClickCard(48181, 5);" class="related-article" id="48181" data-title="ইলিয়াস কাঞ্চন- বাস্তবের মহানায়ক" data-url="/api/cards/48181/details/b5d635ac5b3a8a4726aa0a0a300083c01f6edda5" data-category="Lifestyle" data-position="2" data-icon="e907">
+                <img src="https://api.wowbox.telenor.io/api/cards/images/26d51b180174e1a7792e1b5e84c486c0a31ecb57">
+                <h4>ইলিয়াস কাঞ্চন- বাস্তবের মহানায়ক</h4>
+             </div>
+             <div onclick="onClickCard(48357, 6);" class="related-article" id="48357" data-title="চকোলেটে রূপচর্চা! " data-url="/api/cards/48357/details/8cb0766d85499462a86be603136085becf541e4e" data-category="Lifestyle" data-position="3" data-icon="e90d">
+                <img src="https://api.wowbox.telenor.io/api/cards/images/91e414e24f5dc12122ab4aff55804e1de315a060">
+                <h4>চকোলেটে রূপচর্চা! </h4>
+             </div><div onclick="onClickCard(46880, 7);" class="related-article" id="46880" data-title="৮ জিবি র‌্যামের নকিয়ার নতুন মনস্টার ফোন" data-url="/api/cards/46880/details/2f1fb7fd4424b84682580f1b595cfa05b4936690" data-category="Lifestyle" data-position="1" data-icon="e907">
+                <img src="https://api.wowbox.telenor.io/api/cards/images/ce9306ce55182d7c7d355cf461fda7a6630df108">
+                <h4>৮ জিবি র‌্যামের নকিয়ার নতুন মনস্টার ফোন</h4>
+             </div>
+             <div onclick="onClickCard(48181, 8);" class="related-article" id="48181" data-title="ইলিয়াস কাঞ্চন- বাস্তবের মহানায়ক" data-url="/api/cards/48181/details/b5d635ac5b3a8a4726aa0a0a300083c01f6edda5" data-category="Lifestyle" data-position="2" data-icon="e907">
+                <img src="https://api.wowbox.telenor.io/api/cards/images/26d51b180174e1a7792e1b5e84c486c0a31ecb57">
+                <h4>ইলিয়াস কাঞ্চন- বাস্তবের মহানায়ক</h4>
+             </div>
+             <div onclick="onClickCard(48357, 9);" class="related-article" id="48357" data-title="চকোলেটে রূপচর্চা! " data-url="/api/cards/48357/details/8cb0766d85499462a86be603136085becf541e4e" data-category="Lifestyle" data-position="3" data-icon="e90d">
+                <img src="https://api.wowbox.telenor.io/api/cards/images/91e414e24f5dc12122ab4aff55804e1de315a060">
+                <h4>চকোলেটে রূপচর্চা! </h4>
+             </div>
+            </div><div onclick="onClickCard(46880, 10);" class="related-article" id="46880" data-title="৮ জিবি র‌্যামের নকিয়ার নতুন মনস্টার ফোন" data-url="/api/cards/46880/details/2f1fb7fd4424b84682580f1b595cfa05b4936690" data-category="Lifestyle" data-position="1" data-icon="e907">
+                <img src="https://api.wowbox.telenor.io/api/cards/images/ce9306ce55182d7c7d355cf461fda7a6630df108">
+                <h4>৮ জিবি র‌্যামের নকিয়ার নতুন মনস্টার ফোন</h4>
+             </div>
+            </div>
+         
+      </div>
+      <script>
+         window.onTrackDownloaded = function (err, success) {
+             if (err) {
+                 if (err.permission_denied) {
+                     if (err.never_show_again) {
+                         alert('We need permission to save file into your device. go to settings and update permission please');
+                     } else {
+                         alert('We need permission to save file into your device.');
+                     }
+                 } else {
+                     alert('There was an error downloading the track. Please check your network connection');
+                 }
+                 return;
+             } else {
+                 alert('The file has been downloaded');
+             }
+         };
+         
+         function onClickCard(cardId, pos) {
+            console.log("onClickCard clicked");
+            card.openCardDetails(cardId, "/api/cards/" + cardId + "/details");
+            // card.openURL('https://www.google.com', 
+            //     JSON.stringify({
+            //         callback: 'openUrlCallback',
+            //         data_charge_popup_enabled: false // default true
+            //     })
+            // );
+
+            card.postEvent('client:recommender:card:', 'click', JSON.stringify({
+                card_id: cardId,
+                position: pos,
+                recommender: 'sort_by_total_like',
+                section: 'Trending',
+                page: 'see_all'
+            }));
+         }
+         
+      </script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+   </body>
+</html>

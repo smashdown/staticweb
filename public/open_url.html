@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-bottom: 60px;
+        }
+        /* Custom container */
+        .jumbotron .btn {
+            font-size: 18px;
+            min-width: 240px;
+            padding: 14px 24px;
+        }
+        .jumbotron {
+            margin: 10px 0;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h4>openURL() JS Interface Test</h4><br><br>
+            
+            <a class="btn btn-medium btn-success" href="#" onclick="onClick01()">OpenURL #1</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClick02()">OpenURL #2</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClick03()">OpenURL #3</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClick04()">OpenURL #4</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClick05()">OpenURL #5</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClick06()">OpenURL #6</a><br><br>
+        </div>
+
+    </div>
+    <script>
+        window.openUrlCallback = function (err, success) {
+            if (err) {
+                alert(err.message);
+                return;
+            } else {
+                alert('succeed');
+            }
+        };
+
+        function onClick01() {
+            card.openURL("https://www.google.com");
+        }
+
+        function onClick02() {
+            card.openURLWithoutDataChargePopup('https://www.google.com', 
+               JSON.stringify({
+                   callback: 'openUrlCallback'
+               })
+            );
+        }
+
+        function onClick03() {
+            card.openURL("https://www.google.com", 
+                JSON.stringify({
+                    callback: 'onOpenUrl', 
+                    external_browser: true
+                })
+            );
+        }
+
+        function onClick04() {
+            card.openURL('https://www.google.com', 
+               JSON.stringify({
+                   callback: 'openUrlCallback',
+                   data_charge_popup_enabled: false // default = true
+               })
+           );
+        }
+
+        function onClick05() {
+            card.openURL('https://api.wowbox.telenor.io/api/cards/47413/details', 
+               // if url path is relative, 'external_browser' cannot be false.
+               // if url path is relative, app will inject basic headers and JS interfaces.
+               JSON.stringify({
+                   callback: 'openUrlCallback',
+                   data_charge_popup_enabled: false, // default true
+                   inject_auth_header: false, // it will inject authenication header(default = false)
+                   hide_tool_bar: false, // it will blue hide tool bar of the browser(default = false)
+                   transition_animation: 'FROM_TOP_TO_BOTTOM' // default=FROM_BOTTOM_TO_TOP ( NONE, FROM_RIGHT_TO_LEFT, FROM_LEFT_TO_RIGHT, FROM_TOP_TO_BOTTOM, FROM_BOTTOM_TO_TOP)
+               })
+           );
+        }
+
+        function onClick06() {
+            card.openURL('/api/cards/47413/details', 
+               JSON.stringify({
+                   callback: 'openUrlCallback',
+                   data_charge_popup_enabled: false, // default = true
+
+                   // params below is only working for internal browser, not for external browser.
+
+                   inject_auth_header: true, // it will inject authenication header(default = false)
+                   hide_tool_bar: true, // it will blue hide tool bar of the browser(default = false)
+                   headers: JSON.stringify({ // if FE have additional header, can put it here
+                        "test_header1" : "111",
+                        "test_header1" : "222"
+                   }),
+                   transition_animation: 'FROM_LEFT_TO_RIGHT' // default=FROM_BOTTOM_TO_TOP ( NONE, FROM_RIGHT_TO_LEFT, FROM_LEFT_TO_RIGHT, FROM_TOP_TO_BOTTOM, FROM_BOTTOM_TO_TOP)
+               })
+           );
+        }
+
+        
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+    
+</body>
+
+</html>

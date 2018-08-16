@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+        <title>My tokens</title>
+    </head>
+    <body>
+        <style>
+            @font-face {
+                font-family: 'Zawgyi-One';
+                src: url("file:///android_asset/fonts/ZawgyiOne.ttf");
+            }
+            body {
+                font-size: 16px;
+            }
+            .myanmar {
+                font-weight: 400;
+                line-height: 1.8;
+                font-size: 16px;
+            }
+            .myanmar.zawgyi {
+                font-family: 'Zawgyi-One';
+            }            
+            @font-face {
+                font-family: 'WowBoxIcons';
+                src: url('/content/fonts/icons.ttf'), url('/assets/fonts/icons.ttf');
+                font-weight: normal;
+                font-style: normal;
+            }
+            .icon {
+                font-family: 'WowBoxIcons';
+                font-size: 16px;
+                font-style: normal;
+                margin-right: 5px;
+                position: relative;
+                top: 2px;
+            }
+            .button.share-invites {
+                background-color: #e01f69;
+                max-width: 100%;
+                width: 100%;
+                color: #ffffff;
+                border: none;
+                outline: none;
+                padding: 14px 0;
+                font-size: 1.2em;
+            }
+            .info {
+                padding-top: 1em;
+                padding-bottom: 1em;
+                text-align: center;
+            }
+            .info-link {
+                display: inline-block;
+            }
+            .infoIcon {
+                height: 1.4em;
+                width: auto;
+                padding: 0 6px 0 0;
+            }
+            .info-link img,
+            .moreInfoText {
+                float: left;
+                text-decoration: underline;
+            }
+            .shareIcon {
+                width: 16px;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+                color: #212121;
+            }
+
+            tbody tr {
+                border-bottom: 1px solid #e7e7e7;
+                display:inline-table;
+                padding-top:18px; 
+                padding-bottom:18px; 
+            }
+
+            .content {
+                height: 100%;
+                max-height: 400px;
+                margin: 0 20px;
+                display: block;
+                word-wrap: break-word;
+            }
+
+            .account-balance-overview {
+                display: block;
+                /* Offset 8px to make it has same alignment as other bu */
+                margin-top: 28px;
+                color: #4b559b;
+                font-weight: 600;
+                position: relative;
+            }
+
+            .balance-amount-container {
+                margin-left: 69px;
+                display: inline-block;
+            }
+
+            .balance-header {
+                font-size: 1.5em;
+                line-height: 1.1em;
+            }
+
+            .balance-icon {
+                float: left;
+                margin-right: 20px;
+            }
+
+            .balance-amount {
+                font-size: 2em;
+                line-height: 1.43;
+            }
+
+            .balance-amount .highlight {
+                color: #3aa0d2;
+            }
+
+            .package-overview-description {
+                color: #4b559b;
+                font-size: 1.1em;
+                font-weight: 600;
+            }
+
+            .point-history-description {
+                width:100%;
+                color: #4b559b;
+                font-size: 1.5em;
+                font-weight: 600;
+                text-align: center;
+                margin-top:36px;
+            }
+
+            .last-paragraph {
+                margin-bottom: 20px;
+            }
+            .svg-icon {
+                position: absolute;
+                top: 0px;
+                width: 58px;
+                height: 64px;
+            }
+            .icon-path {
+                fill: #4b559b;
+            }
+            .button.pressed {
+              transform: scale(0.9);
+              -webkit-transform: scale(0.9);
+            }
+            .icon-info:before {
+              content: "\e91b";
+              float: left;
+              padding: 3px;
+              line-height: 1;
+            }
+
+
+            .column-description {
+                width: 100%
+            }
+
+            .primary-description {
+                color: #4b559b; 
+                font-weight:600
+            }
+
+            .secondary-description {
+                color: #666EA7
+            }
+
+            .text-right {
+                text-align:right;
+            }
+        
+        </style>
+        <div class="content myanmar zawgyi">
+            <div class="account-balance-overview">
+                <svg class="svg-icon" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220">
+                    <polygon class="icon-path" points="110 175.8 45 210 57.4 137.6 4.9 86.4 77.5 75.8 110 10 142.5 75.8 215.2 86.4 162.6 137.6 175 210 110 175.8"/>
+                </svg>
+                <div class="balance-amount-container">
+                    <span class="balance-header">အမွတ္လက္က်န္</span>
+                    <br />
+                    <span class="balance-amount">
+                        <span class="highlight">510</span> မွတ္
+                    </span>
+                </div>
+            </div>
+            <div>
+                <p>
+                    <span class="package-overview-description">
+                        <!-- How can I earn tokens? -->
+                        အမွတ္ေတြ ဘယ္လုိရႏိုင္မလဲ ?
+                    
+                    </span>
+                    <br/>
+                    <!-- When you make a purchase in WowBox you earn tokens. -->
+                    <p>Store ထဲက ေဒတာပက္ေက့ခ်္ေတြကို ဝယ္တဲ့အခါ အမွတ္ေတြရႏိုင္ပါတယ္</p>
+                    
+                    <br/>
+                    <!-- Tokens are valid for 6 months. -->
+                    <span class="token-expiry-notice">ရမွတ္ေတြကို ေျခာက္လအတြင္း သာ အသံုးျပဳႏိုင္မွာ ျဖစ္ပါတ</span>
+                </p>
+                <p class="last-paragraph">
+                    <span class="package-overview-description">
+                        <!-- How can I use my tokens? -->
+                        အမွတ္ေတြကို ဘယ္လိုသံုးရမလဲ ?
+                    
+                    </span>
+                    <br/>
+                    <!-- Some products will be possible to purchase with tokens. You will find these in the store section. -->
+                    သင့္ရဲ႕ ရမွတ္ေတြကိုသံုးၿပီး Store ထဲမွာ အျဖဴေရာင္ျပထားတဲ့ ေဒတာပက္ေက့ခ်္ေတြကို ရယူႏိုင္ပါတယ္။
+                
+                </p>
+            </div>
+        </div>
+        <script>
+      </script>
+    </body>
+</html>

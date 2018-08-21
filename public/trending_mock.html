@@ -430,20 +430,17 @@
          
          function onClickCard(cardId, pos) {
             console.log("onClickCard clicked");
+            
             card.openCardDetails(cardId, "/api/cards/" + cardId + "/details");
-            // card.openURL('https://www.google.com', 
-            //     JSON.stringify({
-            //         callback: 'openUrlCallback',
-            //         data_charge_popup_enabled: false // default true
-            //     })
-            // );
-
-            card.postEvent('client:recommender:card:', 'click', JSON.stringify({
+            
+            card.postEvent('click', JSON.stringify({
                 card_id: cardId,
                 position: pos,
                 recommender: 'sort_by_total_like',
                 section: 'Trending',
                 page: 'see_all'
+            }), JSON.stringify({
+                prefix: 'client:recommender:card:'
             }));
          }
          

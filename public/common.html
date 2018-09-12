@@ -54,6 +54,9 @@
 
             <a href="wowbox://page/Store">wowbox://page/Store</a><br><br>
 
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickAuthenticated()">hasAuthenticated</a><br><br>
+            <a class="btn btn-medium btn-success" href="#" onclick="onClickAuthenticate()">authenticate(login)</a><br><br>
+
             <a class="btn btn-medium btn-success" href="#" onclick="onClickOpenCardOnNewWindow()">Open card(new window)</a><br><br>
             <a class="btn btn-medium btn-success" href="#" onclick="onClickOpenCard()">Open card(no new window)</a><br><br>
             <a class="btn btn-medium btn-success" href="#" onclick="onClickDialog1()">Simple Dialog</a><br><br>
@@ -310,6 +313,16 @@
         function onClickScreenSize() {
             alert('Screen width = ' + app.screenWidth() + '\nScreen height = ' + app.screenHeight());
         }
+
+        function onClickAuthenticated() {
+            alert('hasAuthenticated = ' + app.hasAuthenticated());
+        }
+        function onClickAuthenticate() {
+            if(!app.authenticate()){
+                alert('User has already logged in');
+            } 
+        }
+            
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
     

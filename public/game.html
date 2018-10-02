@@ -1,95 +1,232 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="bn">
     <head>
-        <meta name="viewport" content="width=device-width, user-scalable=no, shrink-to-fit=no">
-        <title>Soccertastic</title>
-    </head>
-    <body>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="ব্লক সরিয়ে রাস্তা বানানোর মজার খেলা" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="https://app.wowbox.telenor.io/content/card-images/" />
+        <meta property="og:url" content="https://api.wowbox.telenor.io/api/cards/36948/details">
+        <meta property="al:ios:url" content="wowbox://cards/36948/details" />
+        <meta property="al:ios:app_store_id" content="1053459393" />
+        <!-- itunes connect app id, not bundle id -->
+        <meta property="al:ios:app_name" content="WowBox" />
+        <meta property="al:web:should_fallback" content="false" />
+        <meta property="al:web:url" content="https://api.wowbox.telenor.io/api/cards/36948/details" />
+        <meta property="al:android:url" content="wowbox://api/cards/36948/details" />
+        <meta property="al:android:package" content="com.telenor.ads" />
+        <meta property="al:android:app_name" content="WowBox" />
+        <meta property="fb:app_id" content="1445705312400077" />
+        <title>Unblock me (Forest Interactive)</title>
         <style>
-      
-              @font-face {
-                  font-family: 'Open Sans';
-                  src: url('/content/fonts/OpenSans-Regular.ttf');
-                  font-weight: normal;
-                  font-weight: 400;
-                  font-style: normal;
-              }
-              @font-face {
-                  font-family: 'Open Sans';
-                  src: url('/content/fonts/OpenSans-Semibold.ttf');
-                  font-weight: 500;
-                  font-style: normal;
-              }
-              @font-face {
-                  font-family: 'Open Sans';
-                  src: url('/content/fonts/OpenSans-Bold.ttf');
-                  font-weight: bold;
-                  font-weight: 700;
-                  font-style: normal;
-              }
-              @font-face {
-                  font-family: 'Open Sans';
-                  src: url('/content/fonts/OpenSans-Italic.ttf');
-                  font-weight: normal;
-                  font-weight: 400;
-                  font-style: italic;
-              }
-              @font-face {
-                  font-family: 'Open Sans';
-                  src: url('/content/fonts/OpenSans-BoldItalic.ttf');
-                  font-weight: bold;
-                  font-weight: 700;
-                  font-style: italic;
-              }
-              @font-face {
-                  font-family: 'Nafees';
-                  src: url('/content/fonts/Nafees.ttf');
-              }
-              @font-face {
-                  font-family: 'Pyidaungsu';
-                  /* First src url is for webview on mobiles, Second is for preview on admin */
-                  src: url('/content/fonts/Pyidaungsu.ttf'),
-                       url('https://api.wowbox.telenor.io/content/fonts/Pyidaungsu.ttf');
-              }
-              @font-face {
-                  font-family: 'Zawgyi-One';
-                  src: url('/content/fonts/Zawgyi-One.ttf'),
-                       url('https://api.wowbox.telenor.io/content/fonts/Zawgyi-One.ttf');
-              }
-              body {
-                  font-size: 16px;
-              }
-              .urdu {
-                  direction: rtl;
-                  font-family: 'Nafees';
-                  font-weight: 400;
-              }
-              .myanmar {
-                  font-weight: 400;
-                  line-height: 1.8;
-                  font-size: 16px;
-              }
-              .myanmar.unicode {
-                  font-family: 'Pyidaungsu';
-              }
-      
-              .myanmar.zawgyi {
-                  font-family: 'Zawgyi-One';
-              }
+            
+            @font-face {
+                font-family: 'Open Sans';
+                src: url('/content/fonts/OpenSans-Regular.ttf');
+                font-weight: normal;
+                font-weight: 400;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Open Sans';
+                src: url('/content/fonts/OpenSans-Semibold.ttf');
+                font-weight: 500;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Open Sans';
+                src: url('/content/fonts/OpenSans-Bold.ttf');
+                font-weight: bold;
+                font-weight: 700;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Open Sans';
+                src: url('/content/fonts/OpenSans-Italic.ttf');
+                font-weight: normal;
+                font-weight: 400;
+                font-style: italic;
+            }
+            @font-face {
+                font-family: 'Open Sans';
+                src: url('/content/fonts/OpenSans-BoldItalic.ttf');
+                font-weight: bold;
+                font-weight: 700;
+                font-style: italic;
+            }
+            @font-face {
+                font-family: 'Nafees';
+                src: url('/content/fonts/Nafees.ttf');
+            }
+            @font-face {
+                font-family: 'Pyidaungsu';
+                /* First src url is for webview on mobiles, Second is for preview on admin */
+                src: url('/content/fonts/Pyidaungsu.ttf'),
+                     url('https://api.wowbox.telenor.io/content/fonts/Pyidaungsu.ttf');
+            }
+            @font-face {
+                font-family: 'Zawgyi-One';
+                src: url('/content/fonts/Zawgyi-One.ttf'),
+                     url('https://api.wowbox.telenor.io/content/fonts/Zawgyi-One.ttf');
+            }
+            body {
+                color: #21282E;
+                font-family: "Open Sans", "Zawgyi-One", sans-serif;
+                font-size: 16px;
+                margin: 0;
+                padding: 0 0 1em 0;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                overflow: auto;
+            }
+            .urdu {
+                direction: rtl;
+                font-family: 'Nafees';
+                font-weight: 400;
+            }
+            .myanmar {
+                font-weight: 400;
+                line-height: 1.8;
+                font-size: 16px;
+            }
+            .myanmar.unicode {
+                font-family: 'Pyidaungsu';
+            }
+            
+            .myanmar.zawgyi {
+                font-family: 'Zawgyi-One';
+            }
+            
+            .button {    
+                font-size: 1em;
+                padding: 0.8em 1em;
+                text-align: center;
+                width: 50%;
+            }
+            
+            .button:disabled {
+                color: #D8D8D8;
+                background-color: white;
+                border: 1px solid #D8D8D8;
+            }
+            
+            button.button {
+                border: 1px solid transparent;
+                outline: none;
+            }
+            
+            .button-blue,
+            .button-submit {
+                color: #fff;
+                background-color: #4B559B;
+                margin: 1em auto;
+            }
+            
+            .button-pink {
+                background-color: #E31768;
+            }
+            
+            img {
+                max-width: 100%;
+            }            
+                
+            .hero {
+                display: block;
+                height: auto;
+                width: 100%;
+            }
+            
+            p,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5 {
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+            }
+            
+            .bold {
+                font-weight: 700;
+            }
+            
+            .capitalized {
+                text-transform: uppercase;
+            }
+            
+            .lead {
+                color: #00486A;
+                font-size: 1.25em;
+                margin: .5rem 0;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+            }
+            
+            @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
+                @media {
+                    .myanmar.title {
+                        letter-spacing: -1px;
+                    }
+                }
+            }
+            
+            .text-center {
+                text-align: center;
+            }
+            
+            .title {
+                color: #00A1D6;
+                font-weight: bold;
+                font-size: 1.5em;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+            }
+            
+            .text-center {
+                text-align: center;
+            }
+            
+            .colophon {
+                font-size: 0.8em;
+                margin: .5rem 0 1rem;
+            }
+            
+            .hidden {
+                display: none !important;
+            }
+            
+            .container {
+                padding: 0 1em;
+            }
+            
+            .section {
+                padding: 1em 0;
+            }
+            
+            .section:not(:last-child) {
+                border-top: 1px solid #4A4A4A; 
+            }
+            
+            .pull-left {
+                float: left;
+            }
+            
+            .pull-right {
+                float: right;
+            }
+        </style>
+        <style>
       a {
         text-decoration: none;
       }
 
-      html, body {
-        font-family: "Open Sans", Zawgyi-One;
+      html, body, body > div {
         height: 100%;
-        margin: 0;
         padding: 0;
-        width: 100%;
-      }
-
-      img {
-        max-width: 100%;
       }
 
       .contents {
@@ -101,29 +238,197 @@
         height: 100%;
         width: 100%;
       }
-
     </style>
-        <div id="mainContent" class="contents">
-            <iframe id="gameContent" frameBorder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts"></iframe>
+    </head>
+    <body>
+        <div class="">
+            <div id="mainContent" class="contents">
+                <iframe id="gameContent" frameBorder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts"></iframe>
+            </div>
         </div>
         <script>
+        
+        var WB = WB || (function () {
+            
+            
+        function WBNetwork() {}
+        
+        WBNetwork.prototype = {
+            isOffline: function (err) {
+                var NO_INTERNET_CONNECTION = 1;
+                return err && err.code === NO_INTERNET_CONNECTION;
+            }
+        };
+         
+        function WBPoll(store) {
+            this.key = 'votes';
+            this.store = store;
+        }
+        
+        WBPoll.prototype = {
+            getTotalVote: function (cardId) {
+                var results = this.getVoteResults(cardId);
+                return [].reduce.call(Object.keys(results), function (total, key) {
+                    return total += results[key];
+                }, 0);
+            },
+            getVoteResults: function (cardId) {
+                var votes = this.getVotes();
+                return votes[cardId].results || {};
+            },
+            getVotedValue: function (cardId) {
+                var votes = this.getVotes();
+                return votes[cardId].value || 0;
+            },
+            getVotes: function () {
+                return this.store.get(this.key) || {};
+            },
+            hasVoted: function (cardId) {
+                var votes = this.getVotes();
+                return !!votes[cardId];
+            },
+            updateResults: function (cardId, results) {
+                var votes = this.getVotes();
+                votes[cardId].results = results;
+                this.store.set(this.key, votes);
+            },
+            vote: function (cardId, value, results) {
+                var votes = this.getVotes();
+                votes[cardId] = {
+                    value: value,
+                    results: results,
+                };
+                this.store.set(this.key, votes);
+            },
+            unvote: function (cardId) {
+                var votes = this.getVotes();
+                delete votes[cardId];
+                this.store.set(this.key, votes);
+            }
+        };
+         
+        function WBStore() {
+            this.key = 'WBStore';
+        }
+        
+        WBStore.prototype = {
+            clear: function () {
+                window.localStorage.removeItem(this.key)
+            },
+            init: function () {
+                window.localStorage.setItem(this.key, JSON.stringify({}));
+        
+                return this.root();
+            },
+            get: function (name) {
+                var store = this.root() || this.init();
+        
+                return store[name] || null;
+            },
+            root: function () {
+                return JSON.parse(window.localStorage.getItem(this.key));
+            },
+            set: function (name, value) {
+                var store = this.root() || this.init();
+        
+                store[name] = value;
+                window.localStorage.setItem(this.key, JSON.stringify(store));
+            },
+        };
+         
+        function WBSocial(store) {
+            this.key = 'offlineLikes';
+            this.store = store;
+        }
+        
+        WBSocial.prototype = {
+            clearOfflineLikes: function () {
+                this.store.set(this.key, {});
+            },
+            hasLiked: function (cardId) {
+                var likes = this.store.get(this.key) || {};
+                
+                return likes[cardId] && likes[cardId].hasLiked;
+            },
+            offlineLike: function (cardId, hasLiked) {
+                var likes = this.store.get(this.key) || {};
+            
+                likes[cardId] = {
+                    cardId: cardId,
+                    hasLiked: hasLiked,
+                    timestamp: (new Date()).toISOString(),
+                };
+        
+                this.store.set(this.key, likes);
+            },
+            getOfflineLikes: function () {
+                var all = this.store.get(this.key) || {};
+                var keys = Object.keys(all);
+                var likes = [];
+        
+                for (i=0; i
+            <keys.length; i++) {
+                    likes.push(all[keys[i]]);
+                }
+                        
+                return likes;
+            }
+        };
+         
+        function WBUtils() {}
+        
+        WBUtils.prototype = {
+            addLeadingZeros: function (input) {
+                var inputString = input.toString();
+                return (inputString.length < 2) ? '0' + inputString : inputString;
+            },
+            getMonthName: function (index) {
+                var months = [
+                  'Jan', 'Feb', 'Mar', 'Apr',
+                  'May', 'June', 'July', 'Aug',
+                  'Sept', 'Oct', 'Nov', 'Dec'
+                ];
+                return months[index];
+            }
+        };
+        
+            
+            var store = new WBStore();
+        
+            return {
+                network: new WBNetwork(),
+                poll: new WBPoll(store),
+                store: store,
+                social: new WBSocial(store),
+                utils: new WBUtils(),
+            };
+        })();
+    
+            </script>
+            <script>
       function appendUserId(err, result) {
         var gameContent = document.querySelector('#gameContent');
 
         if (err) {
-          gameContent.src = 'https://api.wowbox.telenor.io/content/games/famobi/soccertastic-v3/index.html';
+          gameContent.src = 'https://app.wowbox.telenor.io/content/games/forest_interactive_games_no_backlink/unblock-me-deluxe-gm-rg-gt/index.html';
         } else {
-          gameContent.src = 'https://api.wowbox.telenor.io/content/games/famobi/soccertastic-v3/index.html?type=wow&m=' + result.encryptedId;
+          gameContent.src = 'https://app.wowbox.telenor.io/content/games/forest_interactive_games_no_backlink/unblock-me-deluxe-gm-rg-gt/index.html?type=wow&m=' + result.encryptedId;
         }
       }
 
       window.onload = function() {
           appendUserId('No user tracking');
+
+          if(card) {
+              if(!card.setPullToRefresh(false)){
+                  console.log("it's already disabled");
+              }
+          }
           // Hack to fit canvas on iOS screen 
-          if(/iPad|iPhone|iPod/.test(navigator.userAgent) && (/famobi\/red-head|stones-of-pharaoh/).test('https://api.wowbox.telenor.io/content/games/famobi/soccertastic-v3/index.html')){
+          if(/iPad|iPhone|iPod/.test(navigator.userAgent) && (/famobi\/red-head|stones-of-pharaoh/).test('https://app.wowbox.telenor.io/content/games/forest_interactive_games_no_backlink/unblock-me-deluxe-gm-rg-gt/index.html')){
             document.querySelector('meta[name="viewport"]').setAttribute("content", "shrink-to-fit=no");
           }
       }
     </script>
-    </body>
-</html>
+        </body>
+    </html>
